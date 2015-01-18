@@ -13,14 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20150104070212) do
 
-  create_table "_attachments_old_20141227", force: :cascade do |t|
-    t.string   "title"
-    t.string   "attachment_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "attachments", force: :cascade do |t|
     t.string   "title"
@@ -43,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150104070212) do
     t.decimal  "longitude",   precision: 10, scale: 6
   end
 
-  add_index "blocks", ["customer_id"], name: "index_blocks_on_customer_id"
+  add_index "blocks", ["customer_id"], name: "index_blocks_on_customer_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.text     "about"
@@ -71,6 +65,6 @@ ActiveRecord::Schema.define(version: 20150104070212) do
     t.integer  "block_id"
   end
 
-  add_index "offers", ["block_id"], name: "index_offers_on_block_id"
+  add_index "offers", ["block_id"], name: "index_offers_on_block_id", using: :btree
 
 end
