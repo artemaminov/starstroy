@@ -15,7 +15,7 @@
         })
   });
 
-  app.factory("mapProvider", function ($http) {
+  function mapProvider($http) {
     return {
       markers: function (id) {
         if (id == null) {
@@ -26,48 +26,47 @@
       },
       map: {}
     };
-  });
+  }
+  app.factory("mapProvider", ["$http", mapProvider]);
 
-  app.controller("mapCtrl", function ($scope, $http, mapProvider) {
+  function mapCtrl($scope, mapProvider) {
     mapProvider.markers().then(function (response) {
       $scope.markers = response.data;
     });
-
     $scope.$on('mapInitialized', function (event, map) {
       mapProvider.map = map;
     });
     $scope.iconChoose = function (date) {
       return (new Date(date) > Date.now()) ? '/assets/map-icn-inprogress.png' : '/assets/map-icn-ready.png';
     };
-  });
+  }
+  app.controller("mapCtrl", ["$scope", "mapProvider", mapCtrl]);
 
-  app.controller("blockCtrl", function ($scope, $http, $routeParams, mapProvider) {
+  function blockCtrl($scope, $routeParams, mapProvider) {
     mapProvider.markers($routeParams.id).then(function (response) {
       $scope.markers = response.data;
     });
-
     $scope.markerZoom = function (id, lat, lng) {
       mapProvider.map.panTo({lat: parseFloat(lat), lng: parseFloat(lng)});
       //mapProvider.map.setZoom(16);
     }
-  });
+  }
+  app.controller("blockCtrl", ["$scope", "$routeParams", "mapProvider", blockCtrl]);
 
-  app.controller("navigationCtrl", function ($scope, mapProvider) {
+  function navigationCtrl($scope, mapProvider) {
     $scope.currentTab = 1;
-
     $scope.tab = function (tab) {
       $scope.currentTab = tab;
     };
-
     $scope.tabClass = function (current) {
       if ($scope.currentTab == current) return "current"
     };
-
     $scope.backBtn = function () {
       mapProvider.markers().then(function (response) {
         $('.blocks').html(response.data);
       });
     };
-  });
+  }
+  app.controller("navigationCtrl", ["$scope", "mapProvider", navigationCtrl]);
 
 })();
