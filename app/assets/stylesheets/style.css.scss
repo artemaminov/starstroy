@@ -1,0 +1,137 @@
+@import url(http://fonts.googleapis.com/css?family=Play:400,700&subset=latin,cyrillic);
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+h1, h2, h3, p, span {
+  font-family: 'Play', sans-serif;
+}
+h1, h2, h3 {
+  font-weight: 700;
+}
+p, span {
+  font-weight: 400;
+}
+h1 {
+  font-size: 1.1em;
+}
+span {
+  font-size: 0.9em;
+}
+
+html, body, #map {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  color: white;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.main {
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  width: 500px;
+  top: 0;
+  bottom: 0;
+  left: 40px;
+  padding: 20px;
+  overflow: auto;
+}
+
+nav {
+  display: table;
+  width: 370px;
+  margin: 22px auto;
+  ul {
+    display: table-row;
+    li {
+      display: table-cell;
+      text-align: center;
+      a {
+        display: inline-block;
+        width: 52px;
+        height: 52px;
+        background-color: white;
+        border-radius: 30px;
+        border: 3px solid white;
+        &.current {
+          border: 3px solid #ffa118;
+        }
+        &:hover {
+          border: 3px solid #FDB931;
+          cursor: pointer;
+        }
+        i {
+          margin: 12px auto 0 auto;
+        }
+      }
+    }
+  }
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+.table {
+  display: table;
+  width: 100%;
+  .row {
+    &:before, &:after {
+      display: table-cell;
+      content: "";
+      width: 50%;
+    }
+    .cell {
+      display: table-cell;
+    }
+  }
+}
+
+.row.withline {
+  &:before, &:after {
+    background: url(line.gif) 0 18px repeat-x transparent;
+  }
+}
+
+h1 {
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.block {
+  margin-top: 20px;
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+  img {
+    float: left;
+    padding-right: 20px;
+  }
+  .date {
+    background-color: #f97777;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 6px 17px;
+    margin-top: 7px;
+    span {
+      padding-left: 10px;
+      border-left: 1px solid white;
+      margin-left: 10px;
+    }
+  }
+}

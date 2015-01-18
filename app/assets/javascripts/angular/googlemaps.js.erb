@@ -1,0 +1,76 @@
+(function () {
+
+  var app = angular.module("starstroy", ['ngMap', 'ngRoute']);
+
+  app.config(function ($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    $routeProvider
+        .when('/', {
+          templateUrl: '<%= asset_path('angular/templates/blocks_list.html') %>',
+          controller: 'blockCtrl'
+        })
+        .when('/block/:id', {
+          templateUrl: '<%= asset_path('angular/templates/block.html') %>',
+          controller: 'blockCtrl'
+        })
+  });
+
+  app.factory("mapProvider", function ($http) {
+    return {
+      markers: function (id) {
+        if (id == null) {
+          return $http.get('blocks.json');
+        } else {
+          return $http.get("block/" + id + ".json");
+        }
+      },
+      map: {}
+    };
+  });
+
+  app.controller("mapCtrl", function ($scope, $http, mapProvider) {
+    mapProvider.markers().then(function (response) {
+      $scope.markers = response.data;
+    });
+
+    $scope.$on('mapInitialized', function (event, map) {
+      mapProvider.map = map;
+    });
+    $scope.iconChoose = function (date) {
+      return (new Date(date) > Date.now()) ? '/assets/map-icn-inprogress.png' : '/assets/map-icn-ready.png';
+    };
+  });
+
+  app.controller("blockCtrl", function ($scope, $http, $routeParams, mapProvider) {
+    mapProvider.markers($routeParams.id).then(function (response) {
+      $scope.markers = response.data;
+    });
+
+    $scope.markerZoom = function (id, lat, lng) {
+      mapProvider.map.panTo({lat: parseFloat(lat), lng: parseFloat(lng)});
+      //mapProvider.map.setZoom(16);
+//      mapProvider.markers(id).then(function (response) {
+//        $('.blocks').html(response.data.title);
+//      });
+    }
+  });
+
+  app.controller("navigationCtrl", function ($scope, mapProvider) {
+    $scope.currentTab = 1;
+
+    $scope.tab = function (tab) {
+      $scope.currentTab = tab;
+    };
+
+    $scope.tabClass = function (current) {
+      if ($scope.currentTab == current) return "current"
+    };
+
+    $scope.backBtn = function () {
+      mapProvider.markers().then(function (response) {
+        $('.blocks').html(response.data);
+      });
+    };
+  });
+
+})();

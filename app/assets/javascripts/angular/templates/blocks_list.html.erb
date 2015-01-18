@@ -1,0 +1,7 @@
+<div ng-repeat="marker in markers" class="block">
+  <img ng-src="{{ marker.attachments[0].attachment.thumb.url }}" alt=""/>
+  <div class="info">
+    <a href="block/{{ marker.id }}" ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)"><span class="title">{{ marker.title }}</span></a>
+    <div class="date"><i class="icn-key"></i><span>{{ marker.finish }}</span></div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  info: MyText
+  popup: MyString
+  finish: 2014-12-25
+  offer_id: 
+  customer_id: 
+  coord_x: 9.99
+  coord_y: 9.99
+
+two:
+  title: MyString
+  info: MyText
+  popup: MyString
+  finish: 2014-12-25
+  offer_id: 
+  customer_id: 
+  coord_x: 9.99
+  coord_y: 9.99

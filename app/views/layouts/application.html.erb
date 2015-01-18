@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="starstroy">
+<head>
+  <base href="/"/>
+  <title>Starstroy</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDUIDzDRBwfv_TI36scUeAy6EEu3g-y0Ew&sensor=true' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div ng-controller="mapCtrl">
+  <map id="map"
+       disable-default-u-i="true"
+       zoom="13"
+       center="[57.142, 65.490]"
+       styles="[
+     {'featureType': 'water', 'elementType': 'geometry.fill', 'stylers': [{'color': '#d3d3d3'}]},
+     {'featureType': 'transit', 'stylers': [{'color': '#808080'}, {'visibility': 'off'}]},
+     {'featureType': 'road.highway', 'elementType': 'geometry.stroke', 'stylers': [{'visibility': 'on'}, {'color': '#b3b3b3'}]},
+     {'featureType': 'road.highway', 'elementType': 'geometry.fill', 'stylers': [{'color': '#ffffff'}]},
+     {'featureType': 'road.local', 'elementType': 'geometry.fill', 'stylers': [{'visibility': 'on'}, {'color': '#ffffff'},     {'weight': 1.8}]},
+     {'featureType': 'road.local', 'elementType': 'geometry.stroke', 'stylers': [{'color': '#d7d7d7'}]},
+     {'featureType': 'poi', 'elementType': 'geometry.fill', 'stylers': [{'visibility': 'on'}, {'color': '#ebebeb'}]},
+     {'featureType': 'administrative', 'elementType': 'geometry', 'stylers': [{'color': '#a7a7a7'}]},
+     {'featureType': 'road.arterial', 'elementType': 'geometry.fill', 'stylers': [{'color': '#ffffff'}]},
+     {'featureType': 'road.arterial', 'elementType': 'geometry.fill', 'stylers': [{'color': '#ffffff'}]},
+     {'featureType': 'landscape', 'elementType': 'geometry.fill', 'stylers': [{'visibility': 'on'}, {'color': '#efefef'}]},
+     {'featureType': 'landscape.man_made', 'elementType': 'geometry.stroke', 'stylers': [{'color': '#d3d3d3'}]},
+     {'featureType': 'road', 'elementType': 'labels.text.fill', 'stylers': [{'color': '#696969'}]},
+     {'featureType': 'administrative', 'elementType': 'labels.text.fill', 'stylers': [{'visibility': 'on'}, {'color': '#737373'}]},
+     {'featureType': 'poi', 'elementType': 'labels.icon', 'stylers': [{'visibility': 'off'}]},
+     {'featureType': 'poi', 'elementType': 'labels', 'stylers': [{'visibility': 'off'}]},
+     {'featureType': 'road.arterial', 'elementType': 'geometry.stroke', 'stylers': [{'color': '#d6d6d6'}]},
+     {'featureType': 'road', 'elementType': 'labels.icon', 'stylers': [{'visibility': 'off'}]},
+     {'featureType': 'poi', 'elementType': 'geometry.fill', 'stylers': [{'color': '#dadada'}]}
+     ]">
+      <marker
+        position="[57.113172, 65.569221]"
+        title="Офис Старстрой"
+        icon="'/assets/map-icn-office.png'"
+        animation="Animation.DROP">
+      </marker>
+      <marker
+        ng-repeat="marker in markers"
+        position="[{{ marker.latitude }}, {{ marker.longitude }}]"
+        title="{{ marker.title }}"
+        icon="{{ iconChoose(marker.finish) }}"
+        animation="Animation.DROP">
+      </marker>
+  </map>
+</div>
+
+<div class="main" ng-controller="navigationCtrl">
+  <div class="logo"></div>
+  <nav>
+    <ul>
+      <li><a ng-click="tab(1)" href="#" ng-class="tabClass(1)"><i class="icn-objects"></i></a></li>
+      <li><a ng-click="tab(2)" href="#" ng-class="tabClass(2)"><i class="icn-coop"></i></a></li>
+      <li><a ng-click="tab(3)" href="#" ng-class="tabClass(3)"><i class="icn-contacts"></i></a></li>
+    </ul>
+  </nav>
+  <div class="table">
+    <div class="row withline">
+      <h1 ng-show="currentTab == 1" class="cell">Объекты&nbsp;строительства</h1>
+      <h1 ng-show="currentTab == 2" class="cell">Сотрудничество</h1>
+      <h1 ng-show="currentTab == 3" class="cell">Контакты</h1>
+    </div>
+  </div>
+  <section class="content">
+    <%= yield %>
+  </section>
+</div>
+
+</body>
+</html>
