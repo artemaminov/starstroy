@@ -49,9 +49,6 @@
     $scope.markerZoom = function (id, lat, lng) {
       mapProvider.map.panTo({lat: parseFloat(lat), lng: parseFloat(lng)});
       //mapProvider.map.setZoom(16);
-//      mapProvider.markers(id).then(function (response) {
-//        $('.blocks').html(response.data.title);
-//      });
     }
   });
 
