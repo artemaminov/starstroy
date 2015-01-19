@@ -3,7 +3,7 @@ a {
   color: white;
 }
 
-h1, h2, h3, p, span {
+h1, h2, h3, p, span, a {
   font-family: 'Play', sans-serif;
 }
 h1, h2, h3 {
@@ -86,7 +86,17 @@ nav {
 .table {
   display: table;
   width: 100%;
+  .back-btn {
+    border-radius: 20px;
+    border: 2px solid white;
+    height: 30px;
+    width: 30px;
+    display: block;
+    line-height: 10px;
+    margin-left: 10px;
+  }
   .row {
+    display: table-row;
     &:before, &:after {
       display: table-cell;
       content: "";
@@ -118,7 +128,11 @@ h1 {
   }
   img {
     float: left;
-    padding-right: 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+  }
+  .info {
+    padding-left: 220px;
   }
   .date {
     background-color: #f97777;

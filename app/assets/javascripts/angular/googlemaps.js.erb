@@ -45,13 +45,19 @@
       $scope.markers = response.data;
     });
     $scope.markerZoom = function (id, lat, lng) {
-      mapProvider.map.panTo({lat: parseFloat(lat), lng: parseFloat(lng)});
-      //mapProvider.map.setZoom(16);
+      $scope.$parent.backBtnState = true;
+      var latlng = new google.maps.LatLng(lat, lng);
+      var offsetX = (window.innerWidth - 580) / 2;
+      var centerOffset = window.innerWidth / 2;
+      console.log(window.innerWidth, offsetX);
+      mapProvider.map.panToWithOffset(latlng, -offsetX - centerOffset, 0);
+//      mapProvider.map.setZoom(16);
     }
   }]);
 
   app.controller('navigationCtrl', ['$scope', 'mapProvider',   function ($scope, mapProvider) {
     $scope.currentTab = 1;
+    $scope.backBtnState = false;
     $scope.tab = function (tab) {
       $scope.currentTab = tab;
     };
@@ -60,9 +66,23 @@
     };
     $scope.backBtn = function () {
       mapProvider.markers().then(function (response) {
-        $('.blocks').html(response.data);
+        $scope.backBtnState = false;
       });
     };
   }]);
 
 })();
+
+google.maps.Map.prototype.panToWithOffset = function(latlng, offsetX, offsetY) {
+  var map = this;
+  var ov = new google.maps.OverlayView();
+  ov.onAdd = function() {
+    var proj = this.getProjection();
+    var aPoint = proj.fromLatLngToContainerPixel(latlng);
+    aPoint.x = aPoint.x+offsetX;
+    aPoint.y = aPoint.y+offsetY;
+    map.panTo(proj.fromContainerPixelToLatLng(aPoint));
+  };
+  ov.draw = function() {};
+  ov.setMap(this);
+};
