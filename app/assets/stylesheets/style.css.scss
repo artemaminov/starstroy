@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Play:400,700&subset=latin,cyrillic);
-
 a {
   text-decoration: none;
   color: white;
@@ -102,7 +100,7 @@ nav {
 
 .row.withline {
   &:before, &:after {
-    background: url(line.gif) 0 18px repeat-x transparent;
+    background: image-url('line.gif') 0 18px repeat-x transparent;
   }
 }
 

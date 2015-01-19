@@ -3,8 +3,9 @@
 <head>
   <base href="/"/>
   <title>Starstroy</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDUIDzDRBwfv_TI36scUeAy6EEu3g-y0Ew&sensor=true' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Play:400,700&subset=cyrillic,latin', media: 'all' %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDUIDzDRBwfv_TI36scUeAy6EEu3g-y0Ew&sensor=true' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
@@ -39,7 +40,7 @@
       <marker
         position="[57.113172, 65.569221]"
         title="Офис Старстрой"
-        icon="'/assets/map-icn-office.png'"
+        icon="<%= asset_path('map-icn-office.png') %>"
         animation="Animation.DROP">
       </marker>
       <marker

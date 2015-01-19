@@ -37,7 +37,7 @@
       mapProvider.map = map;
     });
     $scope.iconChoose = function (date) {
-      return (new Date(date) > Date.now()) ? '/assets/map-icn-inprogress.png' : '/assets/map-icn-ready.png';
+      return (new Date(date) > Date.now()) ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>';
     };
   }
   app.controller("mapCtrl", ["$scope", "mapProvider", mapCtrl]);
