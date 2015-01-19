@@ -52,3 +52,10 @@ ru:
         few: Предложения
         many: Предложений
         other: Предложения
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 'Около %{count} часа'
+        few: 'Около %{count} часов'
+        many: 'Около %{count} часов'
+        other: 'Около %{count} часов'
