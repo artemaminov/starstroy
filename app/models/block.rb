@@ -14,9 +14,7 @@ class Block < ActiveRecord::Base
       field :popup
       field :customer
       field :finish
-      field :attachments do
-        column_width 600
-      end
+      field :attachments
       field :latitude, :map do
         longitude_field :longitude
         google_api_key "AIzaSyDUIDzDRBwfv_TI36scUeAy6EEu3g-y0Ew"
