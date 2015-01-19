@@ -1,0 +1,54 @@
+ru:
+  activerecord:
+    attributes:
+      attachment:
+        title: Заголовок
+        attachment: Файл
+      company:
+        about: О компании
+        contacts: Контактная информация
+      customer:
+        title: Наименование
+        info: Информация
+        phone: Телефон
+        address: Адрес
+        site: Интернет-сайт
+      offer:
+        title: Наименование
+        info: Информация
+        till: Действует до
+        block: Относится к строению
+      block:
+        title: Наименование
+        info: Информация
+        popup: Всплывающий текст
+        customer: Заказчик
+        finish: Сдача в эксплуатацию
+        attachments: Вложения
+        latitude: Координаты
+    models:
+      attachment:
+        one: Вложение
+        few: Вложения
+        many: Вложений
+        other: Вложения
+      block:
+        one: Строение
+        few: Строения
+        many: Строений
+        other: Строения
+      company:
+        one: Компания
+        few: Компании
+        many: Компаний
+        other: Компании
+      customer:
+        one: Партнер
+        few: Партнера
+        many: Партнеров
+        other: Партнеры
+      offer:
+        one: Предложение
+        few: Предложения
+        many: Предложений
+        other: Предложения
