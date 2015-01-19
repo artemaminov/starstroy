@@ -2,6 +2,7 @@
 /.idea
 /!resources
 /tmp
-/public/uploads
+/public/*
 /log
 /db/*.sqlite3
+.env
