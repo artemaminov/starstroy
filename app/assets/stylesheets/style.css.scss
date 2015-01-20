@@ -12,11 +12,17 @@ h1, h2, h3 {
 p, span {
   font-weight: 400;
 }
+p, span {
+  font-size: 0.84em;
+}
 h1 {
   font-size: 1.1em;
+  text-transform: uppercase;
+  padding: 10px;
 }
-span {
-  font-size: 0.9em;
+h2 {
+  font-size: 1em;
+  padding: 10px 0;
 }
 
 html, body, #map {
@@ -114,11 +120,6 @@ nav {
   }
 }
 
-h1 {
-  text-transform: uppercase;
-  padding: 10px;
-}
-
 .block {
   margin-top: 20px;
   &:after {
@@ -133,17 +134,51 @@ h1 {
   }
   .info {
     padding-left: 220px;
+    a {
+      display: block;
+    }
   }
-  .date {
-    background-color: #f97777;
-    border-radius: 10px;
-    display: inline-block;
-    padding: 6px 17px;
-    margin-top: 7px;
-    span {
-      padding-left: 10px;
-      border-left: 1px solid white;
-      margin-left: 10px;
+  .customer-data {
+    padding: 6px 0;
+    &:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+    .customer {
+//      float: left;
+//      max-width: 290px;
+      p {
+//        padding-bottom: 4px;
+//        text-decoration: underline;
+      }
+    }
+    p {
+//      float: right;
+    }
+    .date {
+//      float: right;
+      clear: both;
+    }
+  }
+  .data-block {
+    padding-top: 6px;
+    .date.green {
+      background-color: #93cd61;
+    }
+    .date {
+      background-color: #f97777;
+      border-radius: 6px;
+      display: inline-block;
+      padding: 4px 10px 2px 8px;
+      margin-top: 4px;
+      span {
+        padding-left: 9px;
+        border-left: 1px solid white;
+        margin-left: 8px;
+        line-height: 17px;
+        vertical-align: top;
+      }
     }
   }
 }

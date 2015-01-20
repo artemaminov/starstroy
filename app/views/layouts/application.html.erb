@@ -47,7 +47,7 @@
         ng-repeat="marker in markers"
         position="[{{ marker.latitude }}, {{ marker.longitude }}]"
         title="{{ marker.title }}"
-        icon="{{ iconChoose(marker.finish) }}"
+        icon="{{ iconChoose(marker.finish).icon }}"
         animation="Animation.DROP">
       </marker>
   </map>

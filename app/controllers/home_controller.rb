@@ -11,7 +11,7 @@ class HomeController < ApplicationController
   def blockslist
     respond_to do |format|
       format.json {
-        render json: Block.all.to_json(:include => :attachments)
+        render json: Block.all.to_json(:include => [:attachments, :customer, :offers])
       }
     end
   end
@@ -19,7 +19,7 @@ class HomeController < ApplicationController
   def block
     respond_to do |format|
       format.json {
-        render json: Block.find(params[:id]).to_json(:include => :attachments)
+        render json: Block.find(params[:id]).to_json(:include => [:attachments, :customer, :offers])
       }
     end
   end

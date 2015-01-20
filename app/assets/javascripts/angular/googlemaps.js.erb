@@ -24,7 +24,14 @@
           return $http.get('block/' + id + '.json');
         }
       },
-      map: {}
+      map: {},
+      state: function (date) {
+        var timeFlag = (new Date(date) > Date.now());
+        return {
+          icon: timeFlag ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>',
+          color: timeFlag ? '' : 'green'
+        };
+      }
     };
   }]);
 
@@ -36,22 +43,27 @@
       mapProvider.map = map;
     });
     $scope.iconChoose = function (date) {
-      return (new Date(date) > Date.now()) ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>';
+      var timeFlag = (new Date(date) > Date.now());
+      return {
+        icon: timeFlag ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>',
+        color: timeFlag ? '' : 'green'
+      };
     };
   }]);
 
   app.controller('blockCtrl', ['$scope', '$routeParams', 'mapProvider', function ($scope, $routeParams, mapProvider) {
     mapProvider.markers($routeParams.id).then(function (response) {
       $scope.markers = response.data;
+      $scope.state = mapProvider.state;
     });
     $scope.markerZoom = function (id, lat, lng) {
       $scope.$parent.backBtnState = true;
       var latlng = new google.maps.LatLng(lat, lng);
       var offsetX = (window.innerWidth - 580) / 2;
-      var centerOffset = window.innerWidth / 2;
-      console.log(window.innerWidth, offsetX);
-      mapProvider.map.panToWithOffset(latlng, -offsetX - centerOffset, 0);
+      var centerOffset = window.innerWidth / 4;
+      mapProvider.map.panToWithOffset(latlng, -centerOffset, 0);
 //      mapProvider.map.setZoom(16);
+
     }
   }]);
 
@@ -65,6 +77,7 @@
       if ($scope.currentTab == current) return 'current'
     };
     $scope.backBtn = function () {
+      $('.carousel').trigger('destroy');
       mapProvider.markers().then(function (response) {
         $scope.backBtnState = false;
       });

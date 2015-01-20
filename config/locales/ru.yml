@@ -24,6 +24,7 @@ ru:
         popup: Всплывающий текст
         customer: Заказчик
         finish: Сдача в эксплуатацию
+        offers: Спецпредложения
         attachments: Вложения
         latitude: Координаты
     models:
@@ -48,10 +49,10 @@ ru:
         many: Партнеров
         other: Партнеры
       offer:
-        one: Предложение
-        few: Предложения
-        many: Предложений
-        other: Предложения
+        one: Спецпредложение
+        few: Спецпредложения
+        many: Спецпредложений
+        other: Спецпредложения
   datetime:
     distance_in_words:
       about_x_hours:

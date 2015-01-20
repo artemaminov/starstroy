@@ -13,6 +13,7 @@ class Block < ActiveRecord::Base
       field :info
       field :popup
       field :customer
+      field :offers
       field :finish
       field :attachments
       field :latitude, :map do
