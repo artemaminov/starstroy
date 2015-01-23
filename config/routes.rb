@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  get 'blocks' => 'home#blockslist', :defaults => { :format => 'json' }
-  get 'block/:id' => 'home#block', :defaults => { :format => 'json' }
+
+  resources :blocks, :only => [:index, :show]
   get '*path' => 'home#index'
 
   # Example of regular route:

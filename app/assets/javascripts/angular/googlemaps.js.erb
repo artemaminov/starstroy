@@ -9,23 +9,35 @@
           templateUrl: '<%= asset_path('angular/templates/blocks_list.html') %>',
           controller: 'blockCtrl'
         })
-        .when('/block/:id', {
+        .when('/blocks/:id', {
           templateUrl: '<%= asset_path('angular/templates/block.html') %>',
           controller: 'blockCtrl'
+        })
+        .when('/coop', {
+          templateUrl: '<%= asset_path('angular/templates/coop.html') %>',
+          controller: 'coopCtrl'
+        })
+        .when('/contacts', {
+          templateUrl: '<%= asset_path('angular/templates/contacts.html') %>',
+          controller: 'contactsCtrl'
+        })
+        .when('/contacts/:id', {
+          templateUrl: '<%= asset_path('angular/templates/contacts.html') %>',
+          controller: 'contactsCtrl'
         })
   }]);
 
   app.factory('mapProvider', ['$http', function ($http) {
     return {
+      map: {},
       markers: function (id) {
         if (id == null) {
           return $http.get('blocks.json');
         } else {
-          return $http.get('block/' + id + '.json');
+          return $http.get('blocks/' + id + '.json');
         }
       },
-      map: {},
-      state: function (date) {
+      markerState: function (date) {
         var timeFlag = (new Date(date) > Date.now());
         return {
           icon: timeFlag ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>',
@@ -38,28 +50,22 @@
   app.controller('mapCtrl', ['$scope', 'mapProvider', function ($scope, mapProvider) {
     mapProvider.markers().then(function (response) {
       $scope.markers = response.data;
+      $scope.markerState = mapProvider.markerState;
     });
     $scope.$on('mapInitialized', function (event, map) {
       mapProvider.map = map;
     });
-    $scope.iconChoose = function (date) {
-      var timeFlag = (new Date(date) > Date.now());
-      return {
-        icon: timeFlag ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>',
-        color: timeFlag ? '' : 'green'
-      };
-    };
   }]);
 
   app.controller('blockCtrl', ['$scope', '$routeParams', 'mapProvider', function ($scope, $routeParams, mapProvider) {
     mapProvider.markers($routeParams.id).then(function (response) {
       $scope.markers = response.data;
-      $scope.state = mapProvider.state;
+      $scope.markerState = mapProvider.markerState;
     });
     $scope.markerZoom = function (id, lat, lng) {
       $scope.$parent.backBtnState = true;
       var latlng = new google.maps.LatLng(lat, lng);
-      var offsetX = (window.innerWidth - 580) / 2;
+//      var offsetX = (window.innerWidth - 580) / 2;
       var centerOffset = window.innerWidth / 4;
       mapProvider.map.panToWithOffset(latlng, -centerOffset, 0);
 //      mapProvider.map.setZoom(16);
@@ -82,6 +88,14 @@
         $scope.backBtnState = false;
       });
     };
+  }]);
+
+  app.controller('coopCtrl', ['$scope', function($scope) {
+
+  }]);
+
+  app.controller('contactsCtrl', ['$scope', function($scope) {
+
   }]);
 
 })();
