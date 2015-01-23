@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery/dist/jquery.min
+//= require jquery-ujs/src/rails
 //= require angular/angular.min
 //= require angular-route/angular-route.min
 //= require ngmap/build/scripts/ng-map.min
+//= require caroufredsel/jquery.carouFredSel-6.2.1-packed
 //= require_tree .
