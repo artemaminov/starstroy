@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
-//= require angular-route
+//= require angular/angular.min
+//= require angular-route/angular-route.min
+//= require ngmap/build/scripts/ng-map.min
 //= require_tree .

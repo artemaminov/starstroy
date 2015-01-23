@@ -1,0 +1,16 @@
+{
+  "name": "старстрой.рф",
+  "version": "0.0.0",
+  "homepage": "https://github.com/artemaminov/starstroy",
+  "authors": [
+    "Artem Aminov <artemaminov@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
