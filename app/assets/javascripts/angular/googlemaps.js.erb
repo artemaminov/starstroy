@@ -55,6 +55,10 @@
     $scope.$on('mapInitialized', function (event, map) {
       mapProvider.map = map;
     });
+    $scope.showOffer = function(event, id) {
+      $scope.marker = $scope.markers[id];
+      $scope.showInfoWindow.apply(this, [event, 'info']);
+    }
   }]);
 
   app.controller('blockCtrl', ['$scope', '$routeParams', 'mapProvider', function ($scope, $routeParams, mapProvider) {
@@ -65,9 +69,9 @@
     $scope.markerZoom = function (id, lat, lng) {
       $scope.$parent.backBtnState = true;
       var latlng = new google.maps.LatLng(lat, lng);
-//      var offsetX = (window.innerWidth - 580) / 2;
-      var centerOffset = window.innerWidth / 4;
-      mapProvider.map.panToWithOffset(latlng, -centerOffset, 0);
+//      var browserWidth = window.innerWidth;
+//      var offsetX = (browserWidth - 580) / 2 - (browserWidth / 2 - 580);
+      mapProvider.map.panToWithOffset(latlng, -290, -50);
 //      mapProvider.map.setZoom(16);
 
     }

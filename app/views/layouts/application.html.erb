@@ -37,19 +37,37 @@
      {'featureType': 'road', 'elementType': 'labels.icon', 'stylers': [{'visibility': 'off'}]},
      {'featureType': 'poi', 'elementType': 'geometry.fill', 'stylers': [{'color': '#dadada'}]}
      ]">
-      <marker
-        position="[57.113172, 65.569221]"
-        title="Офис Старстрой"
-        icon="<%= asset_path('map-icn-office.png') %>"
-        animation="Animation.DROP">
-      </marker>
-      <marker
-        ng-repeat="marker in markers"
-        position="[{{ marker.latitude }}, {{ marker.longitude }}]"
-        title="{{ marker.title }}"
-        icon="{{ markerState(marker.finish).icon }}"
-        animation="Animation.DROP">
-      </marker>
+    <marker
+      id="office-marker"
+      position="[57.113172, 65.569221]"
+      title="Офис Старстрой"
+      icon="<%= asset_path('map-icn-office.png') %>"
+      animation="Animation.DROP"
+      on-mouseover="showOffer(event, 'office')"
+      <!--on-mouseout="hideInfoWindow(event, 'info')"-->
+    >
+    </marker>
+    <marker
+      ng-repeat="marker in markers"
+      id="{{ marker.id }}"
+      position="[{{ marker.latitude }}, {{ marker.longitude }}]"
+      title="{{ marker.title }}"
+      icon="{{ markerState(marker.finish).icon }}"
+      animation="Animation.DROP"
+      on-mouseover="showOffer(event, $index)"
+      <!--on-mouseout="hideInfoWindow(event, 'info')"-->
+    >
+    </marker>
+    <info-window id="info" max-width="300">
+      <div ng-non-bindable="">
+        <h1 class="heading">{{ marker.title }}</h1>
+        <div class="content">
+          <ul class="offers">
+            <li ng-repeat="offer in marker.offers">{{ offer.info }}</li>
+          </ul>
+        </div>
+      </div>
+    </info-window>
   </map>
 </div>
 
