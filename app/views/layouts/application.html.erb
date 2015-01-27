@@ -46,6 +46,17 @@
       on-mouseover="showInfoWindow(event, 'office-info')"
     >
     </marker>
+    <info-window id="office-info" max-width="300" visible-on-marker="office-marker">
+      <div ng-non-bindable="">
+        <h1 class="heading nowrap">ООО "Стар-Строй"</h1>
+        <div class="content">
+          <ul class="offers">
+            <li>Офис компании</li>
+            <li>ул. Пермякова 68 к2</li>
+          </ul>
+        </div>
+      </div>
+    </info-window>
     <marker
       ng-repeat="marker in markers"
       id="{{ marker.id }}"
