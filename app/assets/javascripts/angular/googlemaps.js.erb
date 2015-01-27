@@ -30,10 +30,11 @@
   app.factory('mapProvider', ['$http', function ($http) {
     return {
       map: {},
-      markers: function (id) {
-        if (id == null) {
+      markers: {
+        all: function () {
           return $http.get('blocks.json');
-        } else {
+        },
+        find: function (id) {
           return $http.get('blocks/' + id + '.json');
         }
       },
@@ -48,7 +49,7 @@
   }]);
 
   app.controller('mapCtrl', ['$scope', 'mapProvider', function ($scope, mapProvider) {
-    mapProvider.markers().then(function (response) {
+    mapProvider.markers.all().then(function (response) {
       $scope.markers = response.data;
       $scope.markerState = mapProvider.markerState;
     });
@@ -61,8 +62,14 @@
     }
   }]);
 
-  app.controller('blockCtrl', ['$scope', '$routeParams', 'mapProvider', function ($scope, $routeParams, mapProvider) {
-    mapProvider.markers($routeParams.id).then(function (response) {
+  app.controller('blockCtrl', ['$scope', '$location', '$routeParams', 'mapProvider', function ($scope, $location, $routeParams, mapProvider) {
+    var promise;
+    if (!$routeParams.id) {
+      promise = mapProvider.markers.all();
+    } else {
+      promise = mapProvider.markers.find($routeParams.id);
+    }
+    promise.then(function (response) {
       $scope.markers = response.data;
       $scope.markerState = mapProvider.markerState;
     });
@@ -72,23 +79,24 @@
 //      var browserWidth = window.innerWidth;
 //      var offsetX = (browserWidth - 580) / 2 - (browserWidth / 2 - 580);
       mapProvider.map.panToWithOffset(latlng, -290, -50);
-//      mapProvider.map.setZoom(16);
-
+      mapProvider.map.setZoom(16);
+      $location.path('/blocks/' + id);
     }
   }]);
 
-  app.controller('navigationCtrl', ['$scope', 'mapProvider',   function ($scope, mapProvider) {
+  app.controller('navigationCtrl', ['$scope', '$location', 'mapProvider',   function ($scope, $location, mapProvider) {
     $scope.currentTab = 1;
     $scope.backBtnState = false;
-    $scope.tab = function (tab) {
+    $scope.navTo = function (path, tab) {
       $scope.currentTab = tab;
+      $location.path(path);
     };
     $scope.tabClass = function (current) {
       if ($scope.currentTab == current) return 'current'
     };
     $scope.backBtn = function () {
       $('.carousel').trigger('destroy');
-      mapProvider.markers().then(function (response) {
+      mapProvider.markers.all().then(function (response) {
         $scope.backBtnState = false;
       });
     };
