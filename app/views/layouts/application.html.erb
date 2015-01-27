@@ -43,8 +43,7 @@
       title="Офис Старстрой"
       icon="<%= asset_path('map-icn-office.png') %>"
       animation="Animation.DROP"
-      on-mouseover="showOffer(event, 'office')"
-      <!--on-mouseout="hideInfoWindow(event, 'info')"-->
+      on-mouseover="showInfoWindow(event, 'office-info')"
     >
     </marker>
     <marker
@@ -60,11 +59,16 @@
     </marker>
     <info-window id="info" max-width="300">
       <div ng-non-bindable="">
+        <img ng-src="{{ marker.attachments[0].attachment.map_thumb.url }}" alt=""/>
         <h1 class="heading">{{ marker.title }}</h1>
         <div class="content">
-          <ul class="offers">
-            <li ng-repeat="offer in marker.offers">{{ offer.info }}</li>
-          </ul>
+          <p class="popup">{{ marker.popup }}</p>
+          <div ng-show="marker.offers.length">
+            <h2 class="heading">Спецпредложния</h2>
+            <ul class="offers">
+              <li ng-repeat="offer in marker.offers">{{ offer.info }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </info-window>
@@ -75,9 +79,9 @@
   <div class="logo"></div>
   <nav>
     <ul>
-      <li><a ng-click="tab(1)" href="/" ng-class="tabClass(1)"><i class="icn-objects"></i></a></li>
-      <li><a ng-click="tab(2)" href="/coop" ng-class="tabClass(2)"><i class="icn-coop"></i></a></li>
-      <li><a ng-click="tab(3)" href="/contacts" ng-class="tabClass(3)"><i class="icn-contacts"></i></a></li>
+      <li><a ng-click="navTo('/', 1)" href ng-class="tabClass(1)"><i class="icn-objects"></i></a></li>
+      <li><a ng-click="navTo('coop', 2)" href ng-class="tabClass(2)"><i class="icn-coop"></i></a></li>
+      <li><a ng-click="navTo('contacts', 3)" href ng-class="tabClass(3)"><i class="icn-contacts"></i></a></li>
     </ul>
   </nav>
   <div class="table">

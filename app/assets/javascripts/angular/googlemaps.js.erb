@@ -106,14 +106,14 @@
 
 google.maps.Map.prototype.panToWithOffset = function(latlng, offsetX, offsetY) {
   var map = this;
-  var ov = new google.maps.OverlayView();
-  ov.onAdd = function() {
-    var proj = this.getProjection();
-    var aPoint = proj.fromLatLngToContainerPixel(latlng);
-    aPoint.x = aPoint.x+offsetX;
-    aPoint.y = aPoint.y+offsetY;
-    map.panTo(proj.fromContainerPixelToLatLng(aPoint));
+  var overlayView = new google.maps.OverlayView();
+  overlayView.onAdd = function() {
+    var projection = this.getProjection();
+    var containerCoords = projection.fromLatLngToContainerPixel(latlng);
+    containerCoords.x = containerCoords.x + offsetX;
+    containerCoords.y = containerCoords.y + offsetY;
+    map.panTo(projection.fromContainerPixelToLatLng(containerCoords));
   };
-  ov.draw = function() {};
-  ov.setMap(this);
+  overlayView.draw = function() {};
+  overlayView.setMap(this);
 };

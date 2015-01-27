@@ -41,6 +41,9 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   version :thumb, :from_version => :main do
     process :resize_to_fill => [200, 140]
   end
+  version :map_thumb, :from_version => :thumb do
+    process :resize_to_fill => [0, 80]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

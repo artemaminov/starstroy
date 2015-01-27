@@ -28,6 +28,10 @@ h2 {
   padding: 10px 0;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 html, body, #map {
   height: 100%;
   width: 100%;
@@ -43,8 +47,15 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  .heading, .content ul li {
+  .heading, p.popup, .content ul li {
     color: black;
+  }
+  .content {
+    padding-bottom: 10px;
+  }
+  img {
+    float: left;
+    padding: 10px 10px 2px 0;
   }
 }
 
