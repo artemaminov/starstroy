@@ -44,6 +44,17 @@
           icon: timeFlag ? '<%= asset_path('map-icn-inprogress.png') %>' : '<%= asset_path('map-icn-ready.png') %>',
           color: timeFlag ? '' : 'green'
         };
+      },
+      autoCenter: function (markers, map) {
+        var limits = new google.maps.LatLngBounds();
+        coords = new google.maps.LatLng(57.113172, 65.569221);
+        limits.extend(coords);
+        for (var i = 0; i < markers.length; i++) {
+          coords = new google.maps.LatLng(parseFloat(markers[i].latitude), parseFloat(markers[i].longitude));
+          limits.extend(coords);
+        }
+        map.panToWithOffset(limits.getCenter(), -290, -50);
+        return map.fitBounds(limits);
       }
     };
   }]);
@@ -52,6 +63,7 @@
     mapProvider.markers.all().then(function (response) {
       $scope.markers = response.data;
       $scope.markerState = mapProvider.markerState;
+      mapProvider.autoCenter(response.data, mapProvider.map);
     });
     $scope.$on('mapInitialized', function (event, map) {
       mapProvider.map = map;
@@ -98,6 +110,8 @@
       $('.carousel').trigger('destroy');
       mapProvider.markers.all().then(function (response) {
         $scope.backBtnState = false;
+        mapProvider.autoCenter(response.data, mapProvider.map);
+//        mapProvider.map.setZoom(13);
       });
     };
   }]);
