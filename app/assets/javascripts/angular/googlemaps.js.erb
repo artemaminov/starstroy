@@ -13,17 +13,32 @@
           templateUrl: '<%= asset_path('angular/templates/block.html') %>',
           controller: 'blockCtrl'
         })
-        .when('/coop', {
+        .when('/coops', {
+          templateUrl: '<%= asset_path('angular/templates/coops.html') %>',
+          controller: 'coopsCtrl',
+          resolve: {
+            coops: ['dataProvider', function(dataProvider) {
+              return dataProvider.coops.data();
+            }]
+          }
+        })
+        .when('/coops/:id', {
           templateUrl: '<%= asset_path('angular/templates/coop.html') %>',
-          controller: 'coopCtrl'
+          controller: 'coopsCtrl',
+          resolve: {
+            coops: ['dataProvider', function(dataProvider) {
+              return dataProvider.coops.data();
+            }]
+          }
         })
         .when('/contacts', {
           templateUrl: '<%= asset_path('angular/templates/contacts.html') %>',
-          controller: 'contactsCtrl'
-        })
-        .when('/contacts/:id', {
-          templateUrl: '<%= asset_path('angular/templates/contacts.html') %>',
-          controller: 'contactsCtrl'
+          controller: 'contactsCtrl',
+          resolve: {
+              company: ['dataProvider', function (dataProvider) {
+                return dataProvider.company.data();
+              }]
+          }
         })
   }]);
 
@@ -115,13 +130,20 @@
       });
     };
   }]);
+  app.controller('coopsCtrl', ['$scope', 'mapProvider', 'coops', function($scope, mapProvider, coops) {
+    $scope.$parent.currentTab = 2;
 
-  app.controller('coopCtrl', ['$scope', function($scope) {
+    mapProvider.markers.all().then(function(response) {
+      mapProvider.autoCenter(response.data, mapProvider.map);
+    });
 
+    $scope.coops = coops.data;
   }]);
 
-  app.controller('contactsCtrl', ['$scope', function($scope) {
-
+  app.controller('contactsCtrl', ['$scope', 'mapProvider', 'dataProvider', 'company', function($scope, mapProvider, dataProvider, company) {
+    $scope.$parent.currentTab = 3;
+    mapProvider.zoomIn(dataProvider.company.coords.lat, dataProvider.company.coords.lng, mapProvider.map);
+    $scope.company = company.data;
   }]);
 
 })();

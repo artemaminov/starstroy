@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :blocks, :only => [:index, :show]
+  resources :contacts, :only => [:index]
+  resources :coops, :only => [:index]
+
   get '*path' => 'home#index'
 
   # Example of regular route:
