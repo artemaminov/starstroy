@@ -65,7 +65,7 @@
         var latlng = new google.maps.LatLng(lat, lng);
 //      var browserWidth = window.innerWidth;
 //      var offsetX = (browserWidth - 580) / 2 - (browserWidth / 2 - 580);
-        map.panToWithOffset(latlng, -290, -50);
+        map.panToWithOffset(latlng, -250, -50);
         map.setZoom(16);
       },
       autoCenter: function (markers, map) {
@@ -76,7 +76,7 @@
           coords = new google.maps.LatLng(parseFloat(markers[i].latitude), parseFloat(markers[i].longitude));
           limits.extend(coords);
         }
-        map.panToWithOffset(limits.getCenter(), -290, -50);
+        map.panToWithOffset(limits.getCenter(), -250, -50);
         return map.fitBounds(limits);
       }
     };
