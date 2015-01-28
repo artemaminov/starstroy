@@ -42,7 +42,7 @@
         })
   }]);
 
-  app.factory('mapProvider', ['$http', function ($http) {
+  app.factory('mapProvider', ['$http', 'dataProvider', function ($http, dataProvider) {
     return {
       map: {},
       markers: {
@@ -51,7 +51,8 @@
         },
         find: function (id) {
           return $http.get('blocks/' + id + '.json');
-        }
+        },
+        list: {}
       },
       markerState: function (date) {
         var timeFlag = (new Date(date) > Date.now());
@@ -60,9 +61,16 @@
           color: timeFlag ? '' : 'green'
         };
       },
+      zoomIn: function (lat, lng, map) {
+        var latlng = new google.maps.LatLng(lat, lng);
+//      var browserWidth = window.innerWidth;
+//      var offsetX = (browserWidth - 580) / 2 - (browserWidth / 2 - 580);
+        map.panToWithOffset(latlng, -290, -50);
+        map.setZoom(16);
+      },
       autoCenter: function (markers, map) {
         var limits = new google.maps.LatLngBounds();
-        coords = new google.maps.LatLng(57.113172, 65.569221);
+        var coords = new google.maps.LatLng(dataProvider.company.coords.lat, dataProvider.company.coords.lng);
         limits.extend(coords);
         for (var i = 0; i < markers.length; i++) {
           coords = new google.maps.LatLng(parseFloat(markers[i].latitude), parseFloat(markers[i].longitude));
@@ -74,22 +82,61 @@
     };
   }]);
 
+  app.factory('dataProvider', ['$http', function ($http) {
+    return {
+      company: {
+        data: function() {
+          return $http.get('/contacts.json')
+        },
+        coords: {
+          lat: 57.113172,
+          lng: 65.569221
+        }
+      },
+      coops: {
+        data: function() {
+          return $http.get('/coops.json')
+        }
+      }
+    }
+  }]);
+
   app.controller('mapCtrl', ['$scope', 'mapProvider', function ($scope, mapProvider) {
     mapProvider.markers.all().then(function (response) {
       $scope.markers = response.data;
       $scope.markerState = mapProvider.markerState;
-      mapProvider.autoCenter(response.data, mapProvider.map);
+      mapProvider.markers.list = $scope.map.markers;
     });
+
     $scope.$on('mapInitialized', function (event, map) {
       mapProvider.map = map;
     });
-    $scope.showOffer = function(event, id) {
+
+    $scope.showInfo = function(event, id) {
       $scope.marker = $scope.markers[id];
       $scope.showInfoWindow.apply(this, [event, 'info']);
     }
   }]);
 
-  app.controller('blockCtrl', ['$scope', '$location', '$routeParams', 'mapProvider', function ($scope, $location, $routeParams, mapProvider) {
+  app.controller('navigationCtrl', ['$scope', '$location', 'mapProvider',   function ($scope, $location, mapProvider) {
+    $scope.backBtnState = false;
+
+    $scope.tabClass = function (current) {
+      if ($scope.currentTab == current) return 'current'
+    };
+
+    $scope.backBtn = function () {
+      $('.carousel').trigger('destroy');
+      mapProvider.markers.all().then(function (response) {
+        $scope.backBtnState = false;
+        mapProvider.autoCenter(response.data, mapProvider.map);
+      });
+    };
+  }]);
+
+  app.controller('blockCtrl', ['$scope', '$location', '$routeParams', '$timeout', 'mapProvider', function ($scope, $location, $routeParams, $timeout, mapProvider) {
+    $scope.$parent.currentTab = 1;
+
     var promise;
     if (!$routeParams.id) {
       promise = mapProvider.markers.all();
@@ -99,37 +146,27 @@
     promise.then(function (response) {
       $scope.markers = response.data;
       $scope.markerState = mapProvider.markerState;
+      if (!$routeParams.id) {
+        mapProvider.autoCenter(response.data, mapProvider.map);
+      } else {
+
+        mapProvider.zoomIn($scope.markers.latitude, $scope.markers.longitude, mapProvider.map);
+      }
     });
+
     $scope.markerZoom = function (id, lat, lng) {
       $scope.$parent.backBtnState = true;
-      var latlng = new google.maps.LatLng(lat, lng);
-//      var browserWidth = window.innerWidth;
-//      var offsetX = (browserWidth - 580) / 2 - (browserWidth / 2 - 580);
-      mapProvider.map.panToWithOffset(latlng, -290, -50);
-      mapProvider.map.setZoom(16);
+      mapProvider.zoomIn(lat, lng, mapProvider.map);
       $location.path('/blocks/' + id);
+    };
+
+    $scope.showInfo = function(id) {
+      $timeout(function() {
+        google.maps.event.trigger(mapProvider.markers.list[id], 'mouseover');
+      })
     }
   }]);
 
-  app.controller('navigationCtrl', ['$scope', '$location', 'mapProvider',   function ($scope, $location, mapProvider) {
-    $scope.currentTab = 1;
-    $scope.backBtnState = false;
-    $scope.navTo = function (path, tab) {
-      $scope.currentTab = tab;
-      $location.path(path);
-    };
-    $scope.tabClass = function (current) {
-      if ($scope.currentTab == current) return 'current'
-    };
-    $scope.backBtn = function () {
-      $('.carousel').trigger('destroy');
-      mapProvider.markers.all().then(function (response) {
-        $scope.backBtnState = false;
-        mapProvider.autoCenter(response.data, mapProvider.map);
-//        mapProvider.map.setZoom(13);
-      });
-    };
-  }]);
   app.controller('coopsCtrl', ['$scope', 'mapProvider', 'coops', function($scope, mapProvider, coops) {
     $scope.$parent.currentTab = 2;
 

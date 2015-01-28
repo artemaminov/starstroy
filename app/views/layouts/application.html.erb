@@ -64,8 +64,7 @@
       title="{{ marker.title }}"
       icon="{{ markerState(marker.finish).icon }}"
       animation="Animation.DROP"
-      on-mouseover="showOffer(event, $index)"
-      <!--on-mouseout="hideInfoWindow(event, 'info')"-->
+      on-mouseover="showInfo(event, $index)"
     >
     </marker>
     <info-window id="info" max-width="300">
