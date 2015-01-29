@@ -62,11 +62,14 @@
         };
       },
       zoomIn: function (lat, lng, map) {
+        this.center(lat, lng, map);
+        map.setZoom(16);
+      },
+      center: function (lat, lng, map) {
         var latlng = new google.maps.LatLng(lat, lng);
 //      var browserWidth = window.innerWidth;
-//      var offsetX = (browserWidth - 580) / 2 - (browserWidth / 2 - 580);
-        map.panToWithOffset(latlng, -250, -50);
-        map.setZoom(16);
+//      var offsetX = (browserWidth - 540) / 2 - (browserWidth / 2 - 540);
+        map.panToWithOffset(latlng, -270, -50);
       },
       autoCenter: function (markers, map) {
         var limits = new google.maps.LatLngBounds();
@@ -76,8 +79,8 @@
           coords = new google.maps.LatLng(parseFloat(markers[i].latitude), parseFloat(markers[i].longitude));
           limits.extend(coords);
         }
-        map.panToWithOffset(limits.getCenter(), -250, -50);
-        return map.fitBounds(limits);
+        map.panToWithOffset(limits.getCenter(), -270, -50);
+        map.fitBounds(limits);
       }
     };
   }]);
@@ -160,8 +163,9 @@
       $location.path('/blocks/' + id);
     };
 
-    $scope.showInfo = function(id) {
+    $scope.showInfo = function(id, lat, lng) {
       $timeout(function() {
+        mapProvider.center(lat, lng, mapProvider.map);
         google.maps.event.trigger(mapProvider.markers.list[id], 'mouseover');
       })
     }
