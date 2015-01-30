@@ -52,6 +52,9 @@ body {
   }
   .content {
     padding-bottom: 10px;
+    .offers {
+      clear: both;
+    }
   }
   img {
     float: left;

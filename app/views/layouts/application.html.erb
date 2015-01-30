@@ -53,7 +53,7 @@
         <h1 class="heading">{{ marker.title }}</h1>
         <div class="content">
           <p class="popup">{{ marker.popup }}</p>
-          <div ng-show="marker.offers.length">
+          <div ng-show="marker.offers.length" class="offers">
             <h2 class="heading">Спецпредложния</h2>
             <ul class="offers">
               <li ng-repeat="offer in marker.offers">{{ offer.info }}</li>
