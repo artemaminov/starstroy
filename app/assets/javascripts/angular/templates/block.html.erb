@@ -38,7 +38,7 @@
     <div class="customer">
       <p>Заказчик: {{ markers.customer.title }}</p>
     </div>
-    <div class="data-block">
+    <div class="date-block">
       <p>Дата ввода в эксплуатацию:</p>
       <div class="date" ng-class="markerState(markers.finish).color">
         <i class="icn-key"></i><span>{{ markers.finish }}</span>
@@ -50,7 +50,7 @@
     <div ng-repeat="offer in markers.offers" class="offer">
       <p>{{ offer.title }}</p>
       <p>{{ offer.info }}</p>
-      <div class="data-block">
+      <div class="date-block">
         <p>Истекает:</p>
         <div class="date green">
           <i class="icn-key"></i><span>{{ offer.till }}</span>
