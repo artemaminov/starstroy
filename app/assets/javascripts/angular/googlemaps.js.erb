@@ -169,6 +169,10 @@
         google.maps.event.trigger(mapProvider.markers.list[id], 'mouseover');
       })
     }
+
+    $scope.no_3d = function(marker) {
+      return !marker.three_dimension_template;
+    }
   }]);
 
   app.controller('coopsCtrl', ['$scope', 'mapProvider', 'coops', function($scope, mapProvider, coops) {

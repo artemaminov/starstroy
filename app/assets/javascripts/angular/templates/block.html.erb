@@ -43,6 +43,10 @@
       <div class="date" ng-class="markerState(markers.finish).color">
         <i class="icn-key"></i><span>{{ markers.finish }}</span>
       </div>
+      <div class="scheme-view-button date">
+        <a href="{{ markers.scheme.attachment.url }}" class="fancybox" target="_self"><i class="icn-zoom"></i><span>Посмотреть планировки</span></a>
+        <a ng-hide="no_3d(markers)" href="/planoplan/{{ markers.id }}" data-fancybox-type="iframe" class="fancybox" target="_self"><span>3D-вид</span></a>
+      </div>
     </div>
   </div>
   <div class="offers" ng-show="markers.offers.length">

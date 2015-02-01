@@ -12,10 +12,15 @@ class BlocksController < ApplicationController
   def show
     respond_to do |format|
       format.json {
-        render json: Block.find(params[:id]).as_json(:include => [:attachments, :customer, :offers])
+        render json: Block.find(params[:id]).as_json(:include => [:attachments, :scheme, :customer, :offers])
       }
       format.html { render 'home/index' }
     end
+  end
+
+  def planoplan
+    @block = Block.find(params[:id])
+    render layout: 'planoplan' if @block
   end
 
 end

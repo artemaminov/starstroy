@@ -188,8 +188,14 @@ nav {
   }
   .date-block {
     padding-top: 6px;
+    position: relative;
     .date.green {
       background-color: #93cd61;
+    }
+    .scheme-view-button.date {
+      background-color: #ee5c5f;
+      position: absolute;
+      right: 0;
     }
     .date {
       background-color: #f97777;

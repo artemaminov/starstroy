@@ -26,6 +26,8 @@ ru:
         finish: Сдача в эксплуатацию
         offers: Спецпредложения
         attachments: Вложения
+        scheme: Планировка
+        three_dimension_template: Шаблон Planoplan
         latitude: Координаты
     models:
       attachment:

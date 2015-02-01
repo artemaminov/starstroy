@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :contacts, :only => [:index]
   resources :coops, :only => [:index]
 
+  get '/planoplan/:id' => 'blocks#planoplan'
+
   get '*path' => 'home#index'
 
   # Example of regular route:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119150044) do
+ActiveRecord::Schema.define(version: 20150201103540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 20150119150044) do
     t.string   "popup"
     t.date     "finish"
     t.integer  "customer_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.decimal  "latitude",    precision: 10, scale: 6
-    t.decimal  "longitude",   precision: 10, scale: 6
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.decimal  "latitude",                 precision: 10, scale: 6
+    t.decimal  "longitude",                precision: 10, scale: 6
+    t.string   "three_dimension_template"
   end
 
   add_index "blocks", ["customer_id"], name: "index_blocks_on_customer_id", using: :btree

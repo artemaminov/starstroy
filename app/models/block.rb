@@ -1,7 +1,10 @@
 class Block < ActiveRecord::Base
   has_many :offers
   has_many :attachments, as: :attachable
+  has_one :scheme, -> { where attachable_type: 'Scheme' }, class_name: Attachment, foreign_key: :attachable_id
   belongs_to :customer
+
+  accepts_nested_attributes_for :scheme
 
   rails_admin do
     list do
@@ -15,6 +18,8 @@ class Block < ActiveRecord::Base
       field :customer
       field :offers
       field :finish
+      field :scheme
+      field :three_dimension_template
       field :attachments
       field :latitude, :map do
         longitude_field :longitude
