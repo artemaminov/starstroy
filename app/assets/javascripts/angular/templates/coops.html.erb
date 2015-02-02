@@ -5,9 +5,9 @@
     <li ng-repeat="company in coops.customers">
       <h3>{{ company.title }}</h3>
       <p>{{ company.info }}</p>
-      <p class="address">Адрес: {{ company.address }}</p>
-      <p class="phone">Телефон: {{ company.phone }}</p>
-      <p class="site">Сайт: {{ company.site }}</p>
+      <p ng-show="company.address" class="address">Адрес: {{ company.address }}</p>
+      <p ng-show="company.phone" class="phone">Телефон: {{ company.phone }}</p>
+      <p ng-show="company.site" class="site">Сайт: {{ company.site }}</p>
     </li>
   </ul>
 </div>
