@@ -11,9 +11,19 @@ h1, h2, h3 {
 }
 p, span {
   font-weight: 400;
-}
-p, span {
   font-size: 0.84em;
+}
+p {
+  line-height: 1.2em;
+  &.phone {
+
+  }
+  &.address {
+
+  }
+  &.site {
+    text-decoration: underline;
+  }
 }
 h1 {
   font-size: 1.1em;
@@ -26,6 +36,16 @@ h1 {
 h2 {
   font-size: 1em;
   padding: 10px 0;
+}
+h3 {
+  font-size: 0.84em;
+  padding: 10px 0 5px;
+  text-transform: uppercase;
+}
+br {
+  display: block;
+  height: 0.5em;
+  content: "";
 }
 
 .nowrap {
@@ -159,7 +179,7 @@ nav {
     }
   }
   .customer-data {
-    padding: 6px 0;
+    padding: 0 0 6px 0;
     &:after {
       content: "";
       clear: both;

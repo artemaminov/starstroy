@@ -1,5 +1,13 @@
-<div>
+<div class="block">
+  <div class="article" ng-bind-html="coops.company.coop | to_trusted"></div>
+  <h2>Партнеры:</h2>
   <ul>
-    <li ng-repeat="company in coops">{{ company.about }}</li>
+    <li ng-repeat="company in coops.customers">
+      <h3>{{ company.title }}</h3>
+      <p>{{ company.info }}</p>
+      <p class="address">Адрес: {{ company.address }}</p>
+      <p class="phone">Телефон: {{ company.phone }}</p>
+      <p class="site">Сайт: {{ company.site }}</p>
+    </li>
   </ul>
 </div>

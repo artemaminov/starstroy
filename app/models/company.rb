@@ -8,6 +8,7 @@ class Company < ActiveRecord::Base
     edit do
       field :about
       field :contacts
+      field :coop
     end
   end
 

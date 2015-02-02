@@ -1,7 +1,7 @@
 <div class="block">
   <div class="carousel">
     <div ng-repeat="image in markers.attachments">
-      <img ng-src="{{ image.attachment.carousel.url }}" alt=""/>
+      <img width="496px" height="310px" ng-src="{{ image.attachment.carousel.url }}" alt=""/>
       <script ng-if="$last">
         $(".carousel").carouFredSel({
           circular: true,
