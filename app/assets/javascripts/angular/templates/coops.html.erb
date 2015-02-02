@@ -7,7 +7,7 @@
       <p>{{ company.info }}</p>
       <p ng-show="company.address" class="address">Адрес: {{ company.address }}</p>
       <p ng-show="company.phone" class="phone">Телефон: {{ company.phone }}</p>
-      <p ng-show="company.site" class="site">Сайт: {{ company.site }}</p>
+      <p ng-show="company.site" class="site">Сайт: <a href="http://{{ company.site }}" rel="nofollow" target="_blank">{{ company.site }}</a></p>
     </li>
   </ul>
 </div>
