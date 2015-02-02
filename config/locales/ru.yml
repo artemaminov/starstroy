@@ -7,6 +7,7 @@ ru:
       company:
         about: О компании
         contacts: Контактная информация
+        coop: Сотрудничество
       customer:
         title: Наименование
         info: Информация
@@ -61,4 +62,14 @@ ru:
         one: 'Около %{count} часа'
         few: 'Около %{count} часов'
         many: 'Около %{count} часов'
-        other: 'Около %{count} часов'
+        other: 'Около %{count} часа'
+      x_days:
+        one: '%{count} день'
+        few: '%{count} дня'
+        many: '%{count} дней'
+        other: '%{count} дней'
+      x_minutes:
+        one: '%{count} минута'
+        few: '%{count} минуты'
+        many: '%{count} минут'
+        other: '%{count} минуты'
