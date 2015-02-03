@@ -1,4 +1,4 @@
 <div class="block">
-  <p class="about">{{ company.about }}</p>
-  <p class="contacts">{{ company.contacts }}</p>
+  <div class="article" ng-bind-html="company.about | to_trusted"></div>
+  <div class="article" ng-bind-html="company.contacts | to_trusted"></div>
 </div>
