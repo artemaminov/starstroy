@@ -6,6 +6,10 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :attachment, AttachmentUploader
 
+  def imaged_label
+    "#{Block.find(attachable_id).title} - #{ActionController::Base.helpers.image_tag(attachment.thumb.url)}".html_safe
+  end
+
   rails_admin do
     list do
       field :title
@@ -23,5 +27,6 @@ class Attachment < ActiveRecord::Base
                       scope: :block,
                       live_update: false
                   })
+    object_label_method :imaged_label
   end
 end
