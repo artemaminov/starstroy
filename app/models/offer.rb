@@ -9,7 +9,9 @@ class Offer < ActiveRecord::Base
     edit do
       field :title
       field :info
-      field :till
+      field :till do
+        date_format :default
+      end
       field :block
     end
   end

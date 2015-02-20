@@ -17,7 +17,9 @@ class Block < ActiveRecord::Base
       field :popup
       field :customer
       field :offers
-      field :finish
+      field :finish do
+        date_format :default
+      end
       field :scheme
       field :three_dimension_template
       field :attachments
