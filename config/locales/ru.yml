@@ -4,6 +4,7 @@ ru:
       attachment:
         title: Заголовок
         attachment: Файл
+        position: Позиция
       company:
         about: О компании
         contacts: Контактная информация

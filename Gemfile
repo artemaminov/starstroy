@@ -51,3 +51,4 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails_admin'
 gem "rails_admin_map_field", :git => "git://github.com/beyondthestory/rails_admin_map_field.git"
+gem 'rails_admin_nestable'

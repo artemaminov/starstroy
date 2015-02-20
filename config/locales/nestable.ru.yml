@@ -1,0 +1,14 @@
+ru:
+  admin:
+    actions:
+      nestable:
+        title: "Сортировка %{model_label}"
+        menu: "Сортировка"
+        breadcrumb: "Сортировка"
+        link: "Сортировка"
+        bulk_link: "Sort selected %{model_label_plural}"
+        done: "Сортировка сохранена"
+        success: "Сортировка сохранена"
+        error: "Ошибка"
+        update: "Сохранить"
+        live_update: "Сохранять автоматически"
