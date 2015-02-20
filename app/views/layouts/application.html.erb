@@ -45,12 +45,17 @@
       icon="{{ markerState(marker.finish).icon }}"
       animation="Animation.DROP"
       on-mouseover="showInfo(event, $index)"
+      on-click="location(event, marker.id)"
     >
     </marker>
     <info-window id="info" max-width="300">
       <div ng-non-bindable="">
-        <img ng-src="{{ marker.attachments[0].attachment.map_thumb.url }}" alt=""/>
-        <h1 class="heading">{{ marker.title }}</h1>
+        <a href="/blocks/{{ marker.id }}">
+          <img ng-src="{{ marker.attachments[0].attachment.map_thumb.url }}" alt=""/>
+        </a>
+        <a href="/blocks/{{ marker.id }}">
+          <h1 class="heading">{{ marker.title }}</h1>
+        </a>
         <div class="content">
           <p class="popup">{{ marker.popup }}</p>
           <div ng-show="marker.offers.length" class="offers">

@@ -1,6 +1,9 @@
 a {
   text-decoration: none;
   color: white;
+  h1:hover, h2:hover {
+    text-decoration: underline;
+  }
 }
 
 h1, h2, h3, p, span, a {
@@ -36,7 +39,7 @@ h1 {
   }
 }
 h2 {
-  font-size: 1em;
+  font-size: 1.2em;
   padding: 10px 0;
 }
 h3 {
