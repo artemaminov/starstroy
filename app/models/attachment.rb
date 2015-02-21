@@ -7,7 +7,10 @@ class Attachment < ActiveRecord::Base
   mount_uploader :attachment, AttachmentUploader
 
   def imaged_label
-    "#{Block.find(attachable_id).title} - #{ActionController::Base.helpers.image_tag(attachment.thumb.url)}".html_safe
+    unless self.new_record?
+      block = "#{Block.find(attachable_id).title} - " unless attachable_id.nil?
+      "#{block}#{ActionController::Base.helpers.image_tag(attachment.thumb.url)}".html_safe
+    end
   end
 
   rails_admin do

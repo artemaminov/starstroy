@@ -12,9 +12,15 @@
 //
 //= require jquery/dist/jquery.min
 //= require jquery-ujs/src/rails
+//
 //= require angular/angular.min
 //= require angular-route/angular-route.min
+//= require_tree ./angular
+//
 //= require ngmap/build/scripts/ng-map.min
+//
 //= require caroufredsel/jquery.carouFredSel-6.2.1-packed
+//
 //= require fancybox/source/jquery.fancybox.pack
-//= require_tree .
+//
+//= require home
