@@ -1,6 +1,7 @@
 class Block < ActiveRecord::Base
   has_many :offers
   has_many :attachments, as: :attachable
+  has_many :three_d_templates
   has_one :scheme, -> { where attachable_type: 'Scheme' }, class_name: Attachment, foreign_key: :attachable_id
   belongs_to :customer
 
@@ -21,7 +22,7 @@ class Block < ActiveRecord::Base
         date_format :default
       end
       field :scheme
-      field :three_dimension_template
+      field :three_d_templates
       field :attachments
       field :latitude, :map do
         longitude_field :longitude

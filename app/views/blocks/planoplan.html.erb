@@ -1,3 +1,5 @@
-<% unless @block.three_dimension_template.nil? %>
-  <%= @block.three_dimension_template.html_safe %>
+<% @block.three_d_templates.each do |template| %>
+  <div id="planoplan-<%= template.id %>">
+    <%= template.script.html_safe %>
+  </div>
 <% end %>

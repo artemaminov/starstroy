@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204041028) do
+ActiveRecord::Schema.define(version: 20150220130141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,10 @@ ActiveRecord::Schema.define(version: 20150204041028) do
     t.string   "popup"
     t.date     "finish"
     t.integer  "customer_id"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.decimal  "latitude",                 precision: 10, scale: 6
-    t.decimal  "longitude",                precision: 10, scale: 6
-    t.string   "three_dimension_template"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.decimal  "latitude",    precision: 10, scale: 6
+    t.decimal  "longitude",   precision: 10, scale: 6
   end
 
   add_index "blocks", ["customer_id"], name: "index_blocks_on_customer_id", using: :btree
@@ -70,6 +69,16 @@ ActiveRecord::Schema.define(version: 20150204041028) do
 
   add_index "offers", ["block_id"], name: "index_offers_on_block_id", using: :btree
 
+  create_table "three_d_templates", force: :cascade do |t|
+    t.string   "title"
+    t.string   "script"
+    t.integer  "block_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "three_d_templates", ["block_id"], name: "index_three_d_templates_on_block_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -88,4 +97,5 @@ ActiveRecord::Schema.define(version: 20150204041028) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "three_d_templates", "blocks"
 end

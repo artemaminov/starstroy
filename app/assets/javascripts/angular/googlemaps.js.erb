@@ -182,9 +182,9 @@
       })
     }
 
-    $scope.no_3d = function(marker) {
+    $scope.have_3d = function(marker) {
       if (marker) {
-        return !marker.three_dimension_template;
+        return marker.three_d_templates.length > 0;
       }
     }
   }]);
