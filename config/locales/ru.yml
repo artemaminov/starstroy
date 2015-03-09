@@ -31,6 +31,11 @@ ru:
         scheme: Планировка
         three_dimension_template: Шаблон Planoplan
         latitude: Координаты
+      three_d_template:
+        title: Наименование
+        script: JS-скрипт
+        block: Строение
+        cover: Изображение
     models:
       attachment:
         one: Вложение
