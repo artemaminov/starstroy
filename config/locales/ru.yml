@@ -57,6 +57,7 @@ ru:
         few: Спецпредложения
         many: Спецпредложений
         other: Спецпредложения
+      three_d_template: Planoplan
   datetime:
     distance_in_words:
       about_x_hours:

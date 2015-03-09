@@ -1,0 +1,12 @@
+<div class="planoplan" ng-init="planoplanUrl(markers.three_d_templates[0].id)">
+  <h2>Планировки</h2>
+  <ul class="tabs">
+    <li class="tab" ng-repeat="template in markers.three_d_templates | orderBy:'+template.id'">
+      <a href ng-click="planoplanUrl(template.id)">
+        <img ng-src="{{ template.cover.attachment.thumb.url }}" alt=""/>
+        <p>{{ template.title }}</p>
+      </a>
+    </li>
+  </ul>
+  <iframe ng-src="{{ planoplanSrc }}" class="frame"></iframe>
+</div>

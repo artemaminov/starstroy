@@ -1,0 +1,23 @@
+.planoplan {
+  width: 860px;
+  .tabs {
+    float: left;
+    width: 200px;
+    overflow: auto;
+    .tab {
+      padding-bottom: 14px;
+      a {
+        display: block;
+        p {
+          line-height: 1em;
+          color:  #000000;
+        }
+      }
+    }
+  }
+  .frame {
+    width: 642px;
+    height: 530px;
+    float: right;
+  }
+}

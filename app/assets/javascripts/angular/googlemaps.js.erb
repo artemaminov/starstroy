@@ -113,6 +113,60 @@
     }
   }]);
 
+  app.directive('fancybox', ['$compile', '$http', function($compile, $http) {
+    return {
+      restrict: 'A',
+      controller: ['$scope', function($scope) {
+        $scope.openFancybox = function(url) {
+          $http.get(url).then(function(response) {
+            if (response.status == 200) {
+              var template = angular.element(response.data);
+              var compiledTemplate = $compile(template);
+              compiledTemplate($scope);
+              $.fancybox.open({
+                content: template,
+                type: 'ajax' });
+            }
+          });
+        };
+      }]
+    };
+  }]);
+
+  app.directive('caroufredsel', ['$timeout', function($timeout) {
+    return {
+      restrict: 'A',
+      link: function($scope, el, attr) {
+        $timeout(function() {
+          $(".carousel").carouFredSel({
+            circular: true,
+            infinite: true,
+            responsive: true,
+            height: 314,
+            width: 500,
+            align: 'center',
+            items: {
+              visible: 1,
+              height: 314,
+              width: 500,
+              minimum: 2
+            },
+            pagination: {
+              container: ".main-carousel-pager",
+              anchorBuilder: function(nr) {
+                return '<a href="#' + nr + '"></a>'
+              }
+            },
+            auto: {
+              timeoutDuration: 6000
+            },
+            swipe: true
+          });
+        });
+      }
+    }
+  }]);
+
   app.controller('mapCtrl', ['$scope', 'mapProvider', function ($scope, mapProvider) {
     mapProvider.markers.all().then(function (response) {
       $scope.markers = response.data;
@@ -148,6 +202,10 @@
         mapProvider.autoCenter(response.data, mapProvider.map);
       });
     };
+
+    $scope.planoplanUrl = function(id) {
+      $scope.planoplanSrc = '/planoplan/' + id;
+    };
   }]);
 
   app.controller('blockCtrl', ['$scope', '$location', '$routeParams', '$timeout', 'mapProvider', function ($scope, $location, $routeParams, $timeout, mapProvider) {
@@ -180,13 +238,13 @@
         mapProvider.center(lat, lng, mapProvider.map);
         google.maps.event.trigger(mapProvider.markers.list[id], 'mouseover');
       })
-    }
+    };
 
     $scope.have_3d = function(marker) {
       if (marker) {
         return marker.three_d_templates.length > 0;
       }
-    }
+    };
   }]);
 
   app.controller('coopsCtrl', ['$scope', 'mapProvider', 'coops', function($scope, mapProvider, coops) {

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :contacts, :only => [:index]
   resources :coops, :only => [:index]
 
+  get '/plans/:id' => 'blocks#plans'
   get '/planoplan/:id' => 'blocks#planoplan'
 
   get '*path' => 'home#index'

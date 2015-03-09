@@ -1,5 +1,3 @@
-<% @block.three_d_templates.each do |template| %>
-  <div id="planoplan-<%= template.id %>">
-    <%= template.script.html_safe %>
-  </div>
-<% end %>
+<div id="planoplan-<%= @planoplan.id %>">
+  <%= @planoplan.script.html_safe %>
+</div>

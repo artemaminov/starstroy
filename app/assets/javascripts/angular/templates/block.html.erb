@@ -1,34 +1,9 @@
 <div class="block">
-  <div class="carousel">
-    <div ng-repeat="image in markers.attachments">
-      <img width="496px" height="310px" ng-src="{{ image.attachment.carousel.url }}" alt=""/>
-      <script ng-if="$last">
-        $(".carousel").carouFredSel({
-          circular: true,
-          infinite: true,
-    //        responsive: true,
-          height: 314,
-          width: 500,
-          align: 'center',
-          items: {
-            visible: 1,
-            height: 314,
-            width: 500,
-            minimum: 2
-          },
-    //        pagination: {
-    //          container: ".main-carousel-pager",
-    //          anchorBuilder: function(nr) {
-    //            '<a href="#'+nr+'"></a>'
-    //          }
-    //        }
-          auto: {
-            timeoutDuration: 6000
-          },
-          swipe: true
-        });
-      </script>
+  <div class="caroufredsel">
+    <div class="carousel">
+      <img width="496px" height="310px" ng-repeat="image in markers.attachments" caroufredsel ng-src="{{ image.attachment.carousel.url }}" alt=""/>
     </div>
+  <div class="main-carousel-pager"></div>
   </div>
   <h2>{{ markers.title }}</h2>
   <div class="about">
@@ -45,7 +20,7 @@
       </div>
       <div class="scheme-view-button date">
         <a href="{{ markers.scheme.attachment.url }}" class="fancybox" target="_self"><i class="icn-zoom"></i><span>Посмотреть планировки</span></a>
-        <a ng-show="have_3d(markers)" href="/planoplan/{{ markers.id }}" data-fancybox-type="iframe" class="fancybox" target="_self"><span>3D-вид</span></a>
+        <a ng-show="have_3d(markers)" href fancybox ng-click="openFancybox('/plans/' + markers.id)" target="_self"><span>3D-вид</span></a>
       </div>
     </div>
   </div>

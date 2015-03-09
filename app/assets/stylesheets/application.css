@@ -14,4 +14,6 @@
  *= require fancybox/source/jquery.fancybox
  *= require sprites
  *= require style
+ *= require fancybox
+ *= require carousel
  */

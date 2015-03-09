@@ -1,0 +1,23 @@
+.caroufredsel {
+  position: relative;
+  img {
+    float: left;
+  }
+  .main-carousel-pager {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    a {
+      display: block;
+      height: 14px;
+      width: 14px;
+      background-color: #ffffff;
+      float: left;
+      margin-right: 6px;
+      border-radius: 10px;
+      &.selected {
+        background-color: #FDA130;
+      }
+    }
+  }
+}
