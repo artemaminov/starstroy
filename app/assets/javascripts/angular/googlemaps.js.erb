@@ -125,7 +125,8 @@
               compiledTemplate($scope);
               $.fancybox.open({
                 content: template,
-                type: 'ajax' });
+                type: 'ajax'
+              });
             }
           });
         };
@@ -240,9 +241,15 @@
       })
     };
 
-    $scope.have_3d = function(marker) {
+    $scope.have3d = function(marker) {
       if (marker) {
         return marker.three_d_templates.length > 0;
+      }
+    };
+
+    $scope.havePlan = function(marker) {
+      if (marker) {
+        return !!marker.scheme;
       }
     };
   }]);

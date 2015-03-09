@@ -19,8 +19,13 @@
         <i class="icn-key"></i><span>{{ markers.finish }}</span>
       </div>
       <div class="scheme-view-button date">
-        <a href="{{ markers.scheme.attachment.url }}" class="fancybox" target="_self"><i class="icn-zoom"></i><span>Посмотреть планировки</span></a>
-        <a ng-show="have_3d(markers)" href fancybox ng-click="openFancybox('/plans/' + markers.id)" target="_self"><span>3D-вид</span></a>
+        <i class="icn-zoom"></i>
+        <a ng-show="havePlan(markers)" href="{{ markers.scheme.attachment.url }}" class="fancybox" target="_self">
+          <span>Посмотреть планировки</span>
+        </a>
+        <a ng-show="have3d(markers)" href fancybox ng-click="openFancybox('/plans/' + markers.id)">
+          <span>3D-вид</span>
+        </a>
       </div>
     </div>
   </div>

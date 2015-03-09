@@ -24,4 +24,6 @@
 //
 //= require fancybox/source/jquery.fancybox.pack
 //
+//= require jquery-zoom/jquery.zoom.min
+//
 //= require home
