@@ -20,6 +20,7 @@
 //= require ngmap/build/scripts/ng-map.min
 //
 //= require caroufredsel/jquery.carouFredSel-6.2.1-packed
+//= require caroufredsel/helper-plugins/jquery.touchSwipe.min
 //
 //= require fancybox/source/jquery.fancybox.pack
 //
