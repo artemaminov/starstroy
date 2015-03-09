@@ -1,3 +1,6 @@
+.fancybox-skin {
+  background-color: #F5F5F5;
+}
 .planoplan {
   width: 860px;
   .tabs {
@@ -6,11 +9,18 @@
     overflow: auto;
     .tab {
       padding-bottom: 14px;
+      background-color: white;
+      margin-bottom: 10px;
+      border-radius: 5px;
       a {
         display: block;
+        img {
+          border-radius: 5px;
+        }
         p {
           line-height: 1em;
-          color:  #000000;
+          color: #000000;
+          padding: 0 5px;
         }
       }
     }

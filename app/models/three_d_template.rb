@@ -7,6 +7,7 @@ class ThreeDTemplate < ActiveRecord::Base
   rails_admin do
     list do
       field :block
+      field :title
     end
   end
 end
