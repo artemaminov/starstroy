@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
 
   rails_admin do
+    weight 2
     list do
       field :about
       field :contacts

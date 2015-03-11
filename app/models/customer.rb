@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
 
   rails_admin do
+    weight 3
     list do
       field :title
     end

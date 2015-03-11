@@ -8,6 +8,10 @@ class Block < ActiveRecord::Base
   accepts_nested_attributes_for :scheme
 
   rails_admin do
+    weight 0
+    configure :finish do
+      date_format :default
+    end
     list do
       field :title
     end
@@ -18,9 +22,7 @@ class Block < ActiveRecord::Base
       field :popup
       field :customer
       field :offers
-      field :finish do
-        date_format :default
-      end
+      field :finish
       field :scheme
       field :three_d_templates
       field :attachments

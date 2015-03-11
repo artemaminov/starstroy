@@ -14,6 +14,7 @@ class Attachment < ActiveRecord::Base
   # end
 
   rails_admin do
+    weight 9
     list do
       field :title
       field :position
