@@ -1,4 +1,12 @@
 <div class="block">
-  <div class="article" ng-bind-html="company.about | to_trusted"></div>
-  <div class="article" ng-bind-html="company.contacts | to_trusted"></div>
+  <div class="article customer-data" ng-bind-html="company.about | to_trusted"></div>
+  <div class="article offers" ng-bind-html="company.contacts | to_trusted"></div>
+  <div class="date-block" ng-show="haveFiles(company)">
+    <div class="scheme-view-button date" ng-repeat="file in company.files">
+      <i class="icn-download"></i>
+      <a href="{{ file.attachment.url }}" target="_blank">
+        <span>{{ file.title }}</span>
+      </a>
+    </div>
+  </div>
 </div>

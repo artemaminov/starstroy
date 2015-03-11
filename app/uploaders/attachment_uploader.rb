@@ -32,23 +32,23 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :main do
-    process :resize_to_fill => [900, 562]
+  version :main, if: :image? do
+    process resize_to_fill: [900, 562]
   end
-  version :carousel, :from_version => :main do
-    process :resize_to_fill => [496, 310]
+  version :carousel, if: :image?, from_version: :main do
+    process resize_to_fill: [496, 310]
   end
-  version :thumb, :from_version => :main do
-    process :resize_to_fill => [200, 140]
+  version :thumb, if: :image?, from_version: :main do
+    process resize_to_fill: [200, 140]
   end
-  version :map_thumb, :from_version => :thumb do
-    process :resize_to_fill => [0, 80]
+  version :map_thumb, if: :image?, from_version: :thumb do
+    process resize_to_fill: [0, 80]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png pdf)
   end
 
   # Override the filename of the uploaded files:
@@ -56,5 +56,11 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  protected
+
+  def image?(new_file)
+    new_file.content_type.start_with? 'image'
+  end
 
 end

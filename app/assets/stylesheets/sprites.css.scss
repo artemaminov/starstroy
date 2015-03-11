@@ -1,42 +1,56 @@
 .icn-contacts {
-  background: image-url('sprites.png') -204px 0px no-repeat;
-  display: block;
-  width: 21px;
-  height: 29px;
+  background: image-url('sprites.png') -204px -28px no-repeat;
+	display: block;
+	width: 21px;
+	height: 29px;
 }
 
 .icn-coop {
-  background: image-url('sprites.png') 0px -191px no-repeat;
-  display: block;
-  width: 29px;
-  height: 27px;
+  background: image-url('sprites.png') -204px 1px no-repeat;
+	display: block;
+	width: 29px;
+	height: 27px;
 }
 
-.icn-key {
-  background: image-url('sprites.png') -204px -58px no-repeat;
+.icn-download {
+  background: image-url('sprites.png') -204px -84px no-repeat;
   display: inline-block;
-  width: 17px;
+  width: 18px;
   height: 16px;
 }
 
+.icn-key {
+  background: image-url('sprites.png') -204px -120px no-repeat;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+}
+
 .icn-objects {
-  background: image-url('sprites.png') -204px -31px no-repeat;
+  background: image-url('sprites.png') -203px -57px no-repeat;
   display: block;
-  width: 17px;
-  height: 25px;
+  width: 18px;
+  height: 26px;
+}
+
+.icn-paperclip {
+  background: image-url('sprites.png') -204px -102px no-repeat;
+  display: inline-block;
+  width: 18px;
+  height: 16px;
 }
 
 .icn-zoom {
-  background: image-url('sprites.png') -204px -76px no-repeat;
-  display: inline-block;
-  width: 17px;
-  height: 17px;
+  background: image-url('sprites.png') -204px -137px no-repeat;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
 }
 
 .logo {
   background: image-url('sprites.png') 0px 0px no-repeat;
-  display: block;
-  width: 202px;
-  height: 189px;
+	display: block;
+	width: 202px;
+	height: 189px;
 	margin: 32px auto;
 }
