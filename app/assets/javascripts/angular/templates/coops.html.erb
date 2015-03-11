@@ -1,13 +1,15 @@
 <div class="block">
-  <div class="article" ng-bind-html="coops.company.coop | to_trusted"></div>
-  <h2>Партнеры:</h2>
-  <ul>
-    <li ng-repeat="company in coops.customers">
-      <h3>{{ company.title }}</h3>
-      <p>{{ company.info }}</p>
-      <p ng-show="company.address" class="address">Адрес: {{ company.address }}</p>
-      <p ng-show="company.phone" class="phone">Телефон: {{ company.phone }}</p>
-      <p ng-show="company.site" class="site">Сайт: <a href="http://{{ company.site }}" rel="nofollow" target="_blank">{{ company.site }}</a></p>
-    </li>
-  </ul>
+  <div class="article customer-data" ng-bind-html="coops.company.coop | to_trusted"></div>
+  <div class="offers">
+    <h2>Партнеры:</h2>
+    <ul>
+      <li ng-repeat="company in coops.customers">
+        <h3>{{ company.title }}</h3>
+        <p>{{ company.info }}</p>
+        <p ng-show="company.address" class="address">Адрес: {{ company.address }}</p>
+        <p ng-show="company.phone" class="phone">Телефон: {{ company.phone }}</p>
+        <p ng-show="company.site" class="site">Сайт: <a href="http://{{ company.site }}" rel="nofollow" target="_blank">{{ company.site }}</a></p>
+      </li>
+    </ul>
+  </div>
 </div>
