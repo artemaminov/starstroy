@@ -15,6 +15,9 @@ class Attachment < ActiveRecord::Base
 
   rails_admin do
     weight 9
+    configure :attachable do
+      visible false
+    end
     list do
       field :title
       field :position
