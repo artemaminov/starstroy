@@ -2,7 +2,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   belongs_to :block
 
-  scope :block, -> { where(attachable_type: 'Block') }
+  scope :block, -> { where attachable_type: 'Block' }
 
   mount_uploader :attachment, AttachmentUploader
 
