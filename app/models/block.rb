@@ -25,7 +25,13 @@ class Block < ActiveRecord::Base
       field :finish
       field :scheme
       field :three_d_templates
-      field :attachments
+      field :attachments do
+        associated_collection_scope do
+          Proc.new { |scope|
+            scope = scope.blocks_only
+          }
+        end
+      end
       field :latitude, :map do
         longitude_field :longitude
         google_api_key "AIzaSyDUIDzDRBwfv_TI36scUeAy6EEu3g-y0Ew"

@@ -5,6 +5,7 @@ ru:
         title: Заголовок
         attachment: Файл
         position: Позиция
+        block: Строение
       company:
         about: О компании
         contacts: Контактная информация

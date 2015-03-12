@@ -1,8 +1,9 @@
 class Attachment < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
-  belongs_to :block
+  belongs_to :block, foreign_key: :attachable_id
 
-  scope :block, -> { where attachable_type: 'Block' }
+  scope :asc, -> { order('position ASC') }
+  scope :blocks_only, -> { where(attachable_type: 'Block').asc }
 
   mount_uploader :attachment, AttachmentUploader
 
@@ -21,7 +22,11 @@ class Attachment < ActiveRecord::Base
     list do
       field :title
       field :position
-      field :attachable_id
+      field :block do
+        formatted_value do
+          value.title if value
+        end
+      end
     end
     edit do
       field :title
@@ -31,7 +36,7 @@ class Attachment < ActiveRecord::Base
     nestable_list ({
                       position_field: :position,
                       enable_callback: false,
-                      scope: :block,
+                      scope: :blocks_only,
                       live_update: false
                   })
     # object_label_method :imaged_label
