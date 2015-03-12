@@ -2,8 +2,8 @@ class Attachment < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   belongs_to :block, foreign_key: :attachable_id
 
-  scope :asc, -> { order('position ASC') }
-  scope :blocks_only, -> { where(attachable_type: 'Block').asc }
+  scope :blocks_only, -> { where(attachable_type: 'Block') }
+  default_scope { order('position DESC') }
 
   mount_uploader :attachment, AttachmentUploader
 
