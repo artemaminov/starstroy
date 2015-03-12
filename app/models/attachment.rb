@@ -3,7 +3,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :block, foreign_key: :attachable_id
 
   scope :blocks_only, -> { where(attachable_type: 'Block') }
-  default_scope { order('position DESC') }
+  default_scope { order('position ASC') }
 
   mount_uploader :attachment, AttachmentUploader
 
