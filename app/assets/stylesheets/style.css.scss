@@ -98,10 +98,19 @@ body {
   overflow: auto;
 }
 
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 nav {
   display: table;
   width: 370px;
-  margin: 22px auto;
+  position: absolute;
+  left: 0;
+  padding: 0 85px;
+  background: image-url('video-shadow.png') 0 7px;
   ul {
     display: table-row;
     li {
@@ -114,6 +123,7 @@ nav {
         background-color: white;
         border-radius: 30px;
         border: 3px solid white;
+        box-shadow: 0px -3px 8px rgba(100, 100, 100, 1);
         &.current {
           border: 3px solid #ffa118;
         }
@@ -137,6 +147,7 @@ nav {
 .table {
   display: table;
   width: 100%;
+  padding-top: 70px;
   .back-btn {
     border-radius: 20px;
     border: 2px solid white;

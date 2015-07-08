@@ -72,6 +72,10 @@
 
 <div class="main" ng-controller="navigationCtrl">
   <div class="logo"></div>
+  <div class="video">
+    <%= video_tag ["https://starstroy.s3.amazonaws.com/uploads/video/metelevo.mp4", "https://starstroy.s3.amazonaws.com/uploads/video/metelevo.webm"], size: '540x304', preload: "auto", poster: "https://starstroy.s3.amazonaws.com/uploads/video/metelevo.png", autoplay: true, loop: true %>
+    <!--<video width="600" height="338" autoplay loop preload="auto">-->
+  </div>
   <nav>
     <ul>
       <li><a href="/" ng-class="tabClass(1)"><i class="icn-objects"></i></a></li>
