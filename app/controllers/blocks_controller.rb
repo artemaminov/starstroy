@@ -3,7 +3,7 @@ class BlocksController < ApplicationController
   def index
     respond_to do |format|
       format.json {
-        render json: Block.all.as_json(include: [:attachments, :customer, :offers])
+        render json: Block.all.as_json(include: [:attachments, :customer, :active_offers])
       }
       format.html { redirect_to '/' }
     end

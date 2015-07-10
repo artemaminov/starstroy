@@ -58,10 +58,10 @@
         </a>
         <div class="content">
           <p class="popup">{{ marker.popup }}</p>
-          <div ng-show="marker.offers.length" class="offers">
+          <div ng-show="marker.active_offers.length" class="offers">
             <h2 class="heading">Спецпредложния</h2>
             <ul class="offers">
-              <li ng-repeat="offer in marker.offers">{{ offer.info }}</li>
+              <li ng-repeat="offer in marker.active_offers">{{ offer.info }}</li>
             </ul>
           </div>
         </div>
