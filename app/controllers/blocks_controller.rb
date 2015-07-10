@@ -12,7 +12,7 @@ class BlocksController < ApplicationController
   def show
     respond_to do |format|
       format.json {
-        render json: Block.find(params[:id]).as_json(include: [:attachments, :scheme, { three_d_templates: { include: :cover }}, :customer, :offers ])
+        render json: Block.find(params[:id]).as_json(include: [:attachments, :scheme, { three_d_templates: { include: :cover }}, :customer, :active_offers ])
       }
       format.html { render 'home/index' }
     end

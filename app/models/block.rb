@@ -1,5 +1,6 @@
 class Block < ActiveRecord::Base
   has_many :offers, dependent: :destroy
+  has_many :active_offers, -> { where "till > '#{ Date.current }'" }, class_name: 'Offer'
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :three_d_templates, dependent: :destroy
   has_one :scheme, -> { where attachable_type: 'Scheme' }, class_name: Attachment, foreign_key: :attachable_id, dependent: :delete

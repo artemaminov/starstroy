@@ -29,9 +29,9 @@
       </div>
     </div>
   </div>
-  <div class="offers" ng-show="markers.offers.length">
+  <div class="offers" ng-show="markers.active_offers.length">
     <h2>Спецпредложения</h2>
-    <div ng-repeat="offer in markers.offers" class="offer">
+    <div ng-repeat="offer in markers.active_offers" class="offer">
       <p>{{ offer.title }}</p>
       <p>{{ offer.info }}</p>
       <div class="date-block">
