@@ -81,3 +81,8 @@ ru:
         few: '%{count} минуты'
         many: '%{count} минут'
         other: '%{count} минуты'
+      x_months:
+        one: '%{count} месяц'
+        few: '%{count} месяца'
+        many: '%{count} месяцев'
+        other: '%{count} месяца'
