@@ -13,11 +13,29 @@
     $routeProvider
         .when('/', {
           templateUrl: '<%= asset_path('angular/templates/blocks_list.html') %>',
-          controller: 'blockCtrl'
+          controller: 'blockCtrl',
+          resolve: {
+            "backBtn": function() {
+              return {
+                state: function() {
+                  return false;
+                }
+              };
+            }
+          }
         })
         .when('/blocks/:id', {
           templateUrl: '<%= asset_path('angular/templates/block.html') %>',
-          controller: 'blockCtrl'
+          controller: 'blockCtrl',
+          resolve: {
+            "backBtn": function() {
+              return {
+                state: function() {
+                  return true;
+                }
+              };
+            }
+          }
         })
         .when('/coops', {
           templateUrl: '<%= asset_path('angular/templates/coops.html') %>',
@@ -190,8 +208,6 @@
   }]);
 
   app.controller('navigationCtrl', ['$scope', 'mapProvider', function ($scope, mapProvider) {
-    $scope.backBtnState = false;
-
     $scope.tabClass = function (current) {
       if ($scope.currentTab == current) return 'current'
     };
@@ -209,8 +225,9 @@
     };
   }]);
 
-  app.controller('blockCtrl', ['$scope', '$location', '$routeParams', '$timeout', 'mapProvider', function ($scope, $location, $routeParams, $timeout, mapProvider) {
+  app.controller('blockCtrl', ['$scope', 'backBtn', '$location', '$routeParams', '$timeout', 'mapProvider', function ($scope, backBtn, $location, $routeParams, $timeout, mapProvider) {
     $scope.$parent.currentTab = 1;
+    $scope.$parent.backBtnState = backBtn.state();
 
     var promise;
     if (!$routeParams.id) {
