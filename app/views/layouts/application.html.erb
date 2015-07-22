@@ -71,30 +71,32 @@
 </div>
 
 <div class="main" ng-controller="navigationCtrl">
-  <div class="logo"></div>
-  <div class="video">
-    <%= video_tag ["https://starstroy.s3.amazonaws.com/uploads/video/metelevo.mp4", "https://starstroy.s3.amazonaws.com/uploads/video/metelevo.webm"], size: '540x304', preload: "auto", poster: "https://starstroy.s3.amazonaws.com/uploads/video/metelevo.png", autoplay: true, loop: true %>
-    <!--<video width="600" height="338" autoplay loop preload="auto">-->
-  </div>
-  <nav>
-    <ul>
-      <li><a href="/" ng-class="tabClass(1)"><i class="icn-objects"></i></a></li>
-      <li><a href="/coops" ng-class="tabClass(2)"><i class="icn-coop"></i></a></li>
-      <li><a href="/contacts" ng-class="tabClass(3)"><i class="icn-contacts"></i></a></li>
-    </ul>
-  </nav>
-  <div class="table">
-    <div class="row withline">
-      <a ng-show="currentTab == 1 && backBtnState == true" ng-click="backBtn()" class="back-btn" href="/"><h1><</h1></a>
-      <h1 ng-show="currentTab == 1" class="cell">Объекты&nbsp;строительства</h1>
-      <h1 ng-show="currentTab == 2" class="cell">Сотрудничество</h1>
-      <h1 ng-show="currentTab == 3" class="cell">Контакты</h1>
+    <div class="logo"></div>
+    <div class="video">
+      <%= video_tag ["https://starstroy.s3.amazonaws.com/uploads/video/metelevo.mp4", "https://starstroy.s3.amazonaws.com/uploads/video/metelevo.webm"], size: '540x304', preload: "auto", poster: "https://starstroy.s3.amazonaws.com/uploads/video/metelevo.png", autoplay: true, loop: true %>
+      <!--<video width="600" height="338" autoplay loop preload="auto">-->
     </div>
-  </div>
-  <section class="content">
-    <%= yield %>
-  </section>
+    <nav>
+      <ul>
+        <li><a href="/" ng-class="tabClass(1)"><i class="icn-objects"></i></a></li>
+        <li><a href="/coops" ng-class="tabClass(2)"><i class="icn-coop"></i></a></li>
+        <li><a href="/contacts" ng-class="tabClass(3)"><i class="icn-contacts"></i></a></li>
+      </ul>
+    </nav>
+    <div class="table">
+      <div class="row withline">
+        <a ng-show="currentTab == 1 && backBtnState == true" ng-click="backBtn()" class="back-btn" href="/"><h1><</h1></a>
+        <h1 ng-show="currentTab == 1" class="cell">Объекты&nbsp;строительства</h1>
+        <h1 ng-show="currentTab == 2" class="cell">Сотрудничество</h1>
+        <h1 ng-show="currentTab == 3" class="cell">Контакты</h1>
+      </div>
+    </div>
+    <section class="content">
+      <%= yield %>
+    </section>
 </div>
+
+<div class="ad"></div>
 
 </body>
 </html>

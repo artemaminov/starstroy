@@ -88,14 +88,25 @@ body {
 }
 
 .main {
-  background-color: rgba(0,0,0,0.4);
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: relative;
   width: 500px;
-  top: 0;
+  height: 100%;
+  overflow: auto;
+  padding: 0 20px;
+  .content {
+    padding-bottom: 136px;
+  }
+}
+
+.ad {
+  height: 116px;
+  background: image-url('940x116_ipoteka.jpg') no-repeat 50% 0 #A74818;
+  width: 100%;
+  position: absolute;
   bottom: 0;
   left: 0;
-  padding: 20px;
-  overflow: auto;
+  right: 0;
 }
 
 .video {
@@ -204,19 +215,7 @@ nav {
       clear: both;
       display: block;
     }
-    .customer {
-//      float: left;
-//      max-width: 290px;
-      p {
-//        padding-bottom: 4px;
-//        text-decoration: underline;
-      }
-    }
-    p {
-//      float: right;
-    }
     .date {
-//      float: right;
       clear: both;
     }
   }
