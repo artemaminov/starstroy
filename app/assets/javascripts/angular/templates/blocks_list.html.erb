@@ -1,21 +1,59 @@
-<div ng-repeat="marker in markers" class="block">
-  <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
-    <img width="200px" height="140px" ng-src="{{ marker.attachments[0].attachment.thumb.url }}" alt=""/>
-  </a>
-  <div class="info">
+<div class="blocks-list">
+  <a href="#" ng-click="listSwitch = !listSwitch"><i ng-class="{ 'icn-list': !listSwitch, 'icn-tiles': listSwitch }"></i></a>
+</div>
+<div class="list-view" ng-hide="listSwitch">
+  <div ng-repeat="marker in markers" class="block">
     <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
-      <h2 class="title">{{ marker.title }}</h2>
+      <img width="200px" height="140px" ng-src="{{ marker.attachments[0].attachment.thumb.url }}" alt=""/>
     </a>
-    <div class="customer-data">
-      <div class="customer">
-        <p>Заказчик: {{ marker.customer.title }}</p>
-      </div>
-      <div class="date-block">
-        <p>Дата ввода в эксплуатацию:</p>
-        <div class="date" ng-class="markerState(marker.finish).color">
-          <i class="icn-key"></i><span>{{ marker.finish }}</span>
+    <div class="info">
+      <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
+        <h2 class="title">{{ marker.title }}</h2>
+      </a>
+      <div class="customer-data">
+        <div class="customer">
+          <p>Заказчик: {{ marker.customer.title }}</p>
+        </div>
+        <div class="date-block">
+          <p>Дата ввода в эксплуатацию:</p>
+          <div class="date" ng-class="markerState(marker.finish).color">
+            <i class="icn-key"></i><span>{{ marker.finish }}</span>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="tile-view" ng-show="listSwitch">
+  <div ng-repeat="marker in markers" class="block">
+    <div ng-if="marker.active_offers.length > 0" ng-class-even="'offers'">
+      <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
+        <h2 class="title">{{ marker.title }}</h2>
+      </a>
+      <div class="customer-data">
+        <div class="customer">
+          <p>Заказчик: {{ marker.customer.title }}</p>
+        </div>
+        <div class="date-block">
+          <p>Дата ввода в эксплуатацию:</p>
+          <div class="date" ng-class="markerState(marker.finish).color">
+            <i class="icn-key"></i><span>{{ marker.finish }}</span>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li ng-repeat="offer in marker.active_offers" ng-class="{ 'last': $last }">
+          <h3>{{ offer.title }}</h3>
+          <p>{{ offer.info }}</p>
+          <div class="date-block">
+            <p>Истекает:</p>
+            <div class="date green">
+              <i class="icn-key"></i><span>{{ offer.till }}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

@@ -44,7 +44,7 @@ h2 {
 }
 h3 {
   font-size: 0.84em;
-  padding: 10px 0 5px;
+  padding: 6px 0 5px;
   text-transform: uppercase;
 }
 br {
@@ -96,6 +96,35 @@ body {
   padding: 0 20px;
   .content {
     padding-bottom: 136px;
+    position: relative;
+    .blocks-list {
+      position: absolute;
+      right: 0;
+      top: -30px;
+      a {
+        display: block;
+        border-radius: 4px;
+        border: 1px solid white;
+        padding: 4px 3px;
+        &:hover {
+          border: 1px solid rgb(255, 186, 68);
+          //.icn-list {
+          //  background: image-url('sprites.png') -200px 1px no-repeat;
+          //}
+          //.icn-tiles {
+          //  background: image-url('sprites.png') -200px -13px no-repeat;
+          //}
+        }
+      }
+    }
+    .tile-view li {
+      list-style: circle;
+      margin-left: 20px;
+      padding-bottom: 10px;
+    }
+    .tile-view li.last {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -228,8 +257,10 @@ nav {
     }
   }
   .date-block {
-    padding-top: 6px;
     position: relative;
+    & > p {
+      display: inline-block;
+    }
     .date.green {
       background-color: #93cd61;
     }
@@ -242,13 +273,14 @@ nav {
       background-color: #f97777;
       border-radius: 6px;
       display: inline-block;
-      padding: 4px 10px 2px 8px;
+      padding: 2px 10px 0 8px;
       margin-top: 4px;
+      position: relative;
       span {
         padding-left: 9px;
         border-left: 1px solid white;
         margin-left: 8px;
-        line-height: 17px;
+        line-height: 22px;
         vertical-align: top;
       }
     }
