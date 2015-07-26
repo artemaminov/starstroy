@@ -1,8 +1,8 @@
 .icn-contacts {
   background: image-url('sprites.png') -204px -28px no-repeat;
-	display: block;
-	width: 21px;
-	height: 29px;
+  display: block;
+  width: 21px;
+  height: 29px;
 }
 
 .icn-download {
@@ -57,17 +57,19 @@
 }
 
 .icn-zoom {
-  background: image-url('sprites.png') -204px -137px no-repeat;
-	display: inline-block;
-	width: 16px;
-	height: 16px;
+  background: image-url('sprites.png') -204px -138px no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 2px;
 }
 
 .logo {
   background: image-url('sprites.png') 0px 0px no-repeat;
-	display: block;
-	width: 202px;
-	height: 189px;
-	margin: 32px auto;
-    padding-top: 20px;
+  display: block;
+  width: 202px;
+  height: 189px;
+  margin: 32px auto;
+  padding-top: 20px;
 }
