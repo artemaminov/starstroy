@@ -35,6 +35,7 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
     nestable
+    bulk_update
   end
 
 

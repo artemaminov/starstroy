@@ -52,3 +52,5 @@ gem 'devise-i18n-views'
 gem 'rails_admin'
 gem "rails_admin_map_field", :git => "git://github.com/beyondthestory/rails_admin_map_field.git"
 gem 'rails_admin_nestable'
+# gem 'rails_admin_bulk_update', path: '~/Sites/!lab/rails_admin_bulk_update'
+gem 'rails_admin_bulk_update', :git => "git://github.com/artemaminov/rails_admin_bulk_update.git"
