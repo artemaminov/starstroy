@@ -71,6 +71,11 @@ ru:
         few: 'Около %{count} часов'
         many: 'Около %{count} часов'
         other: 'Около %{count} часа'
+      about_x_months:
+        one: 'Около %{count} месяца'
+        few: 'Около %{count} месяцев'
+        many: 'Около %{count} месяцев'
+        other: 'Около %{count} месяца'
       x_days:
         one: '%{count} день'
         few: '%{count} дня'
