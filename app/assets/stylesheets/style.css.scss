@@ -98,22 +98,17 @@ body {
     padding-bottom: 136px;
     position: relative;
     .blocks-list {
-      position: absolute;
-      right: 0;
-      top: -30px;
+      width: 100%;
+      padding-top: 5px;
       a {
         display: block;
         border-radius: 4px;
         border: 1px solid white;
-        padding: 4px 3px;
+        font-size: 0.9em;
+        line-height: 1.8em;
+        text-align: center;
         &:hover {
-          border: 1px solid rgb(255, 186, 68);
-          //.icn-list {
-          //  background: image-url('sprites.png') -200px 1px no-repeat;
-          //}
-          //.icn-tiles {
-          //  background: image-url('sprites.png') -200px -13px no-repeat;
-          //}
+          background-color: rgb(253, 161, 48);
         }
       }
     }
@@ -226,10 +221,17 @@ nav {
     content: "";
     clear: both;
   }
-  img {
-    float: left;
-    border: 2px solid white;
-    border-radius: 4px;
+  a {
+    img {
+      float: left;
+      border: 2px solid white;
+      border-radius: 4px;
+    }
+    &:hover {
+      img {
+        border: 2px solid rgb(255, 186, 68);
+      }
+    }
   }
   .info {
     padding-left: 220px;

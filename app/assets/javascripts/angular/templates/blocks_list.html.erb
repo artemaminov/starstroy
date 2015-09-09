@@ -1,6 +1,11 @@
 <div class="blocks-list">
-  <a href="#" ng-click="listSwitch = !listSwitch"><i ng-class="{ 'icn-list': !listSwitch, 'icn-tiles': listSwitch }"></i></a>
+  <a href="#" ng-click="listSwitch = !listSwitch">
+    <i ng-class="{ 'icn-list': !listSwitch, 'icn-tiles': listSwitch }"></i>
+    <sapn ng-hide="listSwitch">Показать все спецпредложения</sapn>
+    <sapn ng-show="listSwitch">Показать объекты строительства</sapn>
+  </a>
 </div>
+
 <div class="list-view" ng-hide="listSwitch">
   <div ng-repeat="marker in markers" class="block">
     <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
