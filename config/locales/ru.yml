@@ -1,15 +1,26 @@
 ru:
   activerecord:
     attributes:
+      user:
+        email: Электронная почта
+        sign_in_count: Кол-во логинов (раз)
+        current_sign_in_at: Текущее подключение
+        last_sign_in_at: Последнее подключение
+        current_sign_in_ip: Текущий IP подключения
+        last_sign_in_ip: Последний IP подключения
+        reset_password_sent_at: Время восстановления пароля
+        remember_created_at: Запомни меня создано в
       attachment:
         title: Заголовок
         attachment: Файл
         position: Позиция
         block: Строение
+        attachable: Принадлежит
       company:
         about: О компании
         contacts: Контактная информация
         coop: Сотрудничество
+        files: Прикрепленные файлы
       customer:
         title: Наименование
         info: Информация
@@ -27,11 +38,13 @@ ru:
         popup: Всплывающий текст
         customer: Заказчик
         finish: Сдача в эксплуатацию
+        active_offers: Активные предложения
         offers: Спецпредложения
         attachments: Вложения
         scheme: Планировка
-        three_dimension_template: Шаблон Planoplan
+        three_d_templates: Шаблоны Planoplan
         latitude: Координаты
+        longitude: Координаты (долгота)
       three_d_template:
         title: Наименование
         script: JS-скрипт
