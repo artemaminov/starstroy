@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
 
-  has_many :files, class_name: Attachment, as: :attachable, dependent: :destroy
+  has_many :files, as: :attachable, class_name: Attachment, foreign_key: :attachable_id, dependent: :destroy
 
   accepts_nested_attributes_for :files
 

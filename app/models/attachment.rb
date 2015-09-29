@@ -29,6 +29,7 @@ class Attachment < ActiveRecord::Base
       end
     end
     edit do
+      field :attachable
       field :title
       field :position
       field :attachment, :carrierwave
