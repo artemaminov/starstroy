@@ -1,8 +1,8 @@
 class Attachment < ActiveRecord::Base
-  belongs_to :attachable, polymorphic: true
-  belongs_to :block, foreign_key: :attachable_id
 
-  scope :blocks_only, -> { where(attachable_type: 'Block') }
+  belongs_to :attachable, polymorphic: true
+
+  scope :blocks_only, -> { where attachable_type: 'Block' }
   default_scope { order('position ASC') }
 
   mount_uploader :attachment, AttachmentUploader
@@ -22,7 +22,7 @@ class Attachment < ActiveRecord::Base
     list do
       field :title
       field :position
-      field :block do
+      field :attachable do
         formatted_value do
           value.title if value
         end

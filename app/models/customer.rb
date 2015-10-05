@@ -1,5 +1,7 @@
 class Customer < ActiveRecord::Base
 
+  has_many :blocks
+
   rails_admin do
     weight 3
     list do
