@@ -3,7 +3,7 @@ class Customer < ActiveRecord::Base
   has_many :blocks
 
   rails_admin do
-    weight 3
+    weight 4
     list do
       field :title
     end

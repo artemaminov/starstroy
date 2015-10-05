@@ -5,7 +5,7 @@ class ThreeDTemplate < ActiveRecord::Base
   accepts_nested_attributes_for :cover
 
   rails_admin do
-    weight 8
+    weight 3
     list do
       field :block
       field :title

@@ -15,7 +15,7 @@ class Attachment < ActiveRecord::Base
   # end
 
   rails_admin do
-    weight 9
+    weight 6
     configure :attachable do
       visible false
     end

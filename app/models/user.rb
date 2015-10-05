@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   rails_admin do
-    weight 10
+    weight 7
   end
 end

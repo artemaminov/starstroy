@@ -6,7 +6,7 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :files
 
   rails_admin do
-    weight 2
+    weight 5
     list do
       field :about
       field :contacts
