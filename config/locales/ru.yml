@@ -45,6 +45,11 @@ ru:
         three_d_templates: Шаблоны Planoplan
         latitude: Координаты
         longitude: Координаты (долгота)
+      scheme:
+        block: Строение
+        title: Наименование
+        position: Позиция
+        image: Изображение
       three_d_template:
         title: Наименование
         script: JS-скрипт
@@ -76,6 +81,11 @@ ru:
         few: Спецпредложения
         many: Спецпредложений
         other: Спецпредложения
+      scheme:
+        one: Планировка
+        few: Планировки
+        many: Планировок
+        other: Планировки
       three_d_template: Planoplan
   datetime:
     distance_in_words:

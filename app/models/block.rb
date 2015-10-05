@@ -3,10 +3,10 @@ class Block < ActiveRecord::Base
   has_many :active_offers, -> { where "till > '#{ Date.current }'" }, class_name: 'Offer'
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :three_d_templates, dependent: :destroy
-  has_one :scheme, -> { where attachable_type: 'Scheme' }, class_name: Attachment, foreign_key: :attachable_id, dependent: :delete
+  has_one :scheme, inverse_of: :block, dependent: :destroy
   belongs_to :customer, inverse_of: :blocks
 
-  accepts_nested_attributes_for :scheme
+  accepts_nested_attributes_for :customer, :offers, :scheme, :three_d_templates, :attachments, allow_destroy: true
 
   rails_admin do
 
@@ -30,7 +30,9 @@ class Block < ActiveRecord::Base
         inverse_of :blocks
       end
       field :finish
-      field :scheme
+      field :scheme do
+        inverse_of :blocks
+      end
       field :three_d_templates do
         inverse_of :blocks
       end
