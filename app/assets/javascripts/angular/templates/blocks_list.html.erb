@@ -32,7 +32,7 @@
 
 <div class="tile-view" ng-show="listSwitch">
   <div ng-repeat="marker in markers" class="block">
-    <div ng-if="marker.active_offers.length > 0" ng-class-even="'offers'">
+    <div ng-if="marker.active_offers.length > 0">
       <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
         <h2 class="title">{{ marker.title }}</h2>
       </a>
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <ul>
+      <ul class="offers">
         <li ng-repeat="offer in marker.active_offers" ng-class="{ 'last': $last }">
           <h3>{{ offer.title }}</h3>
           <p>{{ offer.info }}</p>
