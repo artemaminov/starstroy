@@ -18,7 +18,7 @@
       <div class="date" ng-class="markerState(markers.finish).color">
         <i class="icn-key"></i><span>{{ markers.finish }}</span>
       </div>
-      <div class="scheme-view-button date">
+      <div ng-show="havePlan(markers) || have3d(markers)" class="scheme-view-button date">
         <i class="icn-zoom"></i>
         <a ng-show="havePlan(markers)" href="{{ markers.scheme.image.attachment.url }}" class="fancybox" target="_self">
           <span>Планировки</span>
