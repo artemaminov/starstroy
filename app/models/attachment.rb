@@ -21,6 +21,7 @@ class Attachment < ActiveRecord::Base
     end
     list do
       field :title
+      field :common
       field :position
       field :attachable do
         formatted_value do
@@ -29,6 +30,7 @@ class Attachment < ActiveRecord::Base
       end
     end
     edit do
+      field :common
       field :attachable
       field :title
       field :position

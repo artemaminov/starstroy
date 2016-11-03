@@ -16,6 +16,7 @@ ru:
         position: Позиция
         block: Строение
         attachable: Принадлежит
+        common: Общий
       company:
         about: О компании
         contacts: Контактная информация
