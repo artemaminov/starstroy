@@ -97,6 +97,49 @@ body {
   .content {
     padding-bottom: 136px;
     position: relative;
+    label {
+      font: normal 16px/normal 'Play', sans-serif;
+    }
+    input {
+      display: inline-block;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      padding: 10px 20px;
+      border: 1px solid #b7b7b7;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      font: normal 16px/normal 'Play', sans-serif;
+      color: rgb(0, 0, 0);
+      -o-text-overflow: clip;
+      text-overflow: clip;
+      background: rgba(252,252,252,1);
+      -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+      box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+      -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+    input[type="checkbox"] {
+      width: auto;
+    }
+    input[type="submit"] {
+      background: #edb92e;
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      text-shadow: none;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -o-transition: none;
+      transition: none;
+      cursor: pointer;
+      color: white;
+    }
     .blocks-list {
       width: 100%;
       padding-top: 5px;
@@ -145,7 +188,7 @@ nav {
   position: absolute;
   left: 0;
   padding: 0 85px;
-  background: image-url('video-shadow.png') 0 7px;
+  background: image-url('video-shadow.png') 0 7px repeat-x transparent;
   ul {
     display: table-row;
     li {
@@ -281,7 +324,7 @@ nav {
       span {
         padding-left: 9px;
         border-left: 1px solid white;
-        margin-left: 8px;
+        margin-left: 3px;
         line-height: 22px;
         vertical-align: top;
       }
