@@ -5,6 +5,10 @@ class Attachment < ActiveRecord::Base
   scope :blocks_only, -> { where attachable_type: 'Block' }
   default_scope { order('position ASC') }
 
+  def pricelist
+    'Price should be here'
+  end
+
   mount_uploader :attachment, AttachmentUploader
 
   # def imaged_label

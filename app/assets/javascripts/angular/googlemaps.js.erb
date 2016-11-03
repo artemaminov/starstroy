@@ -102,8 +102,8 @@
         var limits = new google.maps.LatLngBounds();
         var coords = new google.maps.LatLng(dataProvider.company.coords.lat, dataProvider.company.coords.lng);
         limits.extend(coords);
-        for (var i = 0; i < markers.length; i++) {
-          coords = new google.maps.LatLng(parseFloat(markers[i].latitude), parseFloat(markers[i].longitude));
+        for (var i = 0; i < markers.blocks.length; i++) {
+          coords = new google.maps.LatLng(parseFloat(markers.blocks[i].latitude), parseFloat(markers.blocks[i].longitude));
           limits.extend(coords);
         }
         map.panToWithOffset(limits.getCenter(), -270, -50);
@@ -198,7 +198,7 @@
     });
 
     $scope.showInfo = function(event, id) {
-      $scope.marker = $scope.markers[id];
+      $scope.marker = $scope.markers.blocks[id];
       $scope.showInfoWindow.apply(this, [event, 'info']);
     };
 

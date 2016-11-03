@@ -37,7 +37,7 @@
       </div>
     </info-window>
     <marker
-      ng-repeat="marker in markers"
+      ng-repeat="marker in markers.blocks"
       id="{{ marker.id }}"
       position="[{{ marker.latitude }}, {{ marker.longitude }}]"
       title="{{ marker.title }}"

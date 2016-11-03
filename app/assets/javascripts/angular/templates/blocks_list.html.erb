@@ -1,13 +1,22 @@
 <div class="blocks-list">
   <a href="#" ng-click="listSwitch = !listSwitch">
     <i ng-class="{ 'icn-list': !listSwitch, 'icn-tiles': listSwitch }"></i>
-    <sapn ng-hide="listSwitch">Показать все спецпредложения</sapn>
-    <sapn ng-show="listSwitch">Показать объекты строительства</sapn>
+    <span ng-hide="listSwitch">Показать спецпредложения</span>
+    <span ng-show="listSwitch">Показать объекты строительства</span>
   </a>
 </div>
 
+<div ng-show="listSwitch" class="blocks-list">
+  <div ng-repeat="pricelist in markers.price">
+    <a href="{{ pricelist.attachment.url }}" target="_blank">
+      <i class="icn-download"></i>
+      <span>Скачать {{ pricelist.title }} (PDF)</span>
+    </a>
+  </div>
+</div>
+
 <div class="list-view" ng-hide="listSwitch">
-  <div ng-repeat="marker in markers" class="block">
+  <div ng-repeat="marker in markers.blocks" class="block">
     <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
       <img width="200px" height="140px" ng-src="{{ marker.attachments[0].attachment.thumb.url }}" alt=""/>
     </a>
@@ -31,7 +40,7 @@
 </div>
 
 <div class="tile-view" ng-show="listSwitch">
-  <div ng-repeat="marker in markers" class="block">
+  <div ng-repeat="marker in markers.blocks" class="block">
     <div ng-if="marker.active_offers.length > 0">
       <a href ng-click="markerZoom(marker.id, marker.latitude, marker.longitude)" ng-mouseover="showInfo(marker.id, marker.latitude, marker.longitude)">
         <h2 class="title">{{ marker.title }}</h2>

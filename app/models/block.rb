@@ -8,6 +8,10 @@ class Block < ActiveRecord::Base
 
   accepts_nested_attributes_for :customer, :offers, :scheme, :three_d_templates, :attachments, allow_destroy: true
 
+  def self.pricelist
+    Attachment.where({ common: true, attachable_type: 'Block' })
+  end
+
   rails_admin do
 
     weight 0
